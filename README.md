@@ -1,5 +1,5 @@
 # Cameron Blanchard
-# Senior Project 2022
+## Senior Project 2022
 
 This is my first big girl project! 
 Have you ever struggled with finding a movie to watch with your boo or your friends? 
