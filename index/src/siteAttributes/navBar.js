@@ -1,21 +1,29 @@
 import React from 'react';
-import siteLogo from '../visuals/placeholder.png'
+import { Link } from "react-router-dom";
+import './navBar.css';
+/* eslint-disable */
 
-function navBar() {
+
+function Navbar() {
   return (
     <div>
-        <nav className = "navBar">
-            <div className = "fullScreenMode">
-                <img src = {siteLogo}></img>
+        <nav className = "Navbar">
+            <div className = "logo">
+                <img src ='../visuals/placeholder.jpg'></img>
             </div>
             
 
 
 
-            <div className = "minimizedMode"></div>
+            <div className = "links">
+                <Link to = "/">Home Page</Link>
+                <Link to = "/aboutPage">About Page</Link>
+                <Link to = "/contactPage">Contact Page</Link>
+                
+            </div>
         </nav>
     </div>
   )
 }
 
-export default navBar
+export default Navbar;
