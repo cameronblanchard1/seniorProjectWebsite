@@ -12,16 +12,20 @@
     padding-left: 100px;
     /* padding-top: 20px; */
     align-items: center;
+    color: white;
 }
 
 /* .Navbar .logo img {
     width: 100px;
 } */
 
-.Navbar .links {
+.Navbar .links{
+    display: flex;
     text-align: center; 
+    align-items: center;
 }
 
 .Navbar a {
-    color: white;
+    color: rgb(255, 246, 246);
+    padding: 30px;
 }
