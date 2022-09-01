@@ -3,7 +3,7 @@ import React from 'react'
 function aboutPage() {
   return (
     <div>
-        <p>inside of about page</p>
+        <p>Inside of about page</p>
     </div>
   )
 }
