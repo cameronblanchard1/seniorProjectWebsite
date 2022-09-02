@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
 *{
     font-size: 16px;
+    font-family: 'Barlow', sans-serif;
     padding: 0px;
     margin: 0;
     box-sizing: border-box;
@@ -25,7 +28,7 @@ nav a {
 
 nav a:hover {
     text-decoration: underline;
-    color: darkmagenta;
+    color: rgb(139, 137, 139);
     font-size: 20px;
 }
 
@@ -43,7 +46,16 @@ nav .logInButton {
     position: fixed;
     top: 30px;
     right: 100px;
+    padding: 5px 20px;
+    background-color: #a1c181;
+    cursor: pointer;
+    border: none;
 }
+
+nav .logInButton:active {
+    top: 32px;
+}
+
 
 /* setting visibility and opacity to transp. and hidden because at largest version of the screen, we do not want these functions visisble */
 header .navclicks {

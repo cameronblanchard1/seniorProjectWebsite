@@ -18,9 +18,9 @@ const displayNavbar = () => {
     <header>
         <img src={require('./movieMagicIcon.png')} />
         <nav ref = {navRef}>
-            <a href= './homePage'>Home Page</a>
-            <a href= './aboutPage'>About Page</a>
-            <a href= './contactPage'>Contact Page</a>
+            <a href= './homePage'>Home</a>
+            <a href= './aboutPage'>About</a>
+            <a href= './contactPage'>Contact</a>
             {/* wondering if i should add this in, not sure if i want it to be here or a link underneath the text boxes */}
             <button className= "logInButton">Log In</button>
             <button className = "navclicks closeNav" onClick={displayNavbar}><FaTimes/></button>

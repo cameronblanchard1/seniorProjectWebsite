@@ -1,5 +1,4 @@
 import React from 'react'
-import "./homePage.css"
 
 function aboutPage() {
   return (
