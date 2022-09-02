@@ -1,9 +1,10 @@
 import React from 'react'
+import "./homePage.css"
 
 function aboutPage() {
   return (
     <div>
-        <p>Inside of about page</p>
+        <h1>Inside of about page</h1>
     </div>
   )
 }

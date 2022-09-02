@@ -16,14 +16,16 @@ const displayNavbar = () => {
   return (
 
     <header>
-        <h3>Logo here</h3>
+        <img src={require('./movieMagicIcon.png')} />
         <nav ref = {navRef}>
-            <a href= '/#'>Home Page</a>
-            <a href= '/#'>About Page</a>
-            <a href= '/#'>Contact Page</a>
-            <button onClick={displayNavbar}><FaTimes/></button>
+            <a href= './homePage'>Home Page</a>
+            <a href= './aboutPage'>About Page</a>
+            <a href= './contactPage'>Contact Page</a>
+            {/* wondering if i should add this in, not sure if i want it to be here or a link underneath the text boxes */}
+            <button className= "logInButton">Log In</button>
+            <button className = "navclicks closeNav" onClick={displayNavbar}><FaTimes/></button>
         </nav>
-        <button onClick={displayNavbar}><FaTimes/></button>
+        <button className = "navclicks" onClick={displayNavbar}><FaBars/></button>
     </header>
   )
 }
