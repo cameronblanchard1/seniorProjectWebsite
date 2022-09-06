@@ -1,43 +1,20 @@
-import './App.css';
-import homePage from './pages/homePage';
-import aboutPage from './pages/aboutPage';
-import Navbar from './siteAttributes/Navbar';
-// import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
+import Navbar from "./Components/Navbar";
 
-
-// ReactDOM.render(
-//   <Router>
-//      <Routes>
-//         <Route exact path="/" component={homePage}/>
-//       <Route exact path="/aboutPage" component={aboutPage}/>
-//     </Routes>
-//   </Router>,
-//   document.getElementById('root')
-// );
- 
-
-function App() {
-  return (
-    <>
-    <Navbar/>
-    </>
+function App(){
+  return(
+    <Router>
+      <Navbar/>
+      <Routes>
+        <Route path = "/" element = {<Home />} />
+        <Route path = "/About" element = {<About />} />
+        <Route path = "/Contact" element = {<Contact />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
-
-
-{/* <div className="App">
-<Router>
-  <div>
-    <Navbar/>
-    <p>This is the landing page</p>
-    <Routes>
-        <Route  exact path = "/" element = {<homePage />}/>
-        <Route  path = "aboutPage" element={<aboutPage/>}/>
-
-    </Routes>
-  </div>
-</Router>
-</div> */}
