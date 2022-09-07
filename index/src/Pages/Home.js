@@ -4,7 +4,7 @@ import HomePageVid from '../Components/HomePageVid';
 
 function Home (){
     return(
-      <HomePageVid/>   
+      <HomePageVid />
     );
     
 }

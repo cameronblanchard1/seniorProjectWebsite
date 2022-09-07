@@ -20,7 +20,7 @@ const displayNavbar = () => {
         <img src={require('./movieMagicIcon.png')} />
         <nav ref = {navRef}>
             <Link to = "/">Home</Link>
-            <Link to = "/About">About</Link>
+            {/* <Link to = "/About">About</Link> */}
             <Link to = "/Contact">Contact</Link>
             <Link to="/Login"> <button className= "logInButton">Log In</button></Link>
 
