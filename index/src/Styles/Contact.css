@@ -2,12 +2,20 @@
     text-align: right;
 }
 
+h1{
+    margin-right: 17px;
+}
+
+
 h2{
     font-size: 40px;
+    margin-right: 17px;
 }
 
 h3{
     font-size: 20px;
+    margin-right: 17px;
+    margin-top: 3px;
     /* padding: 20px; */
 }
 
@@ -39,8 +47,8 @@ p {
     padding: 50px;
     padding-left: 150px;
     border-radius: 80%;
-    /* position: absolute; */
-    z-index: 1;
+    position: relative;
+    z-index: 2;
 
 }
 
@@ -50,9 +58,25 @@ p {
     width: 500px; */
     /* padding: 50px;
     padding-left: 170px; */
+    left: 350px;
+    top: 400px;
     border-radius: 50%;
     position: absolute;
-    z-index: 2;
+    /* z-index: 2; */
+
+}
+
+.yellow {
+    float: left;  
+    /* height: 500px;
+    width: 500px; */
+    /* padding: 50px;
+    padding-left: 170px; */
+    left: 100px;
+    top: 100px;
+    border-radius: 20%;
+    position: absolute;
+    /* z-index: 2; */
 
 }
 

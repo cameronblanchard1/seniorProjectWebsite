@@ -7,6 +7,7 @@ function Contact (){
         <div>
             <img className = "headshot" src={require('./blanchard_headshot.png')} />
             <img className = "orange" src={require('./orangecontact.png')} />
+            <img className = "yellow" src={require('./yellowcontact.png')} />
         <div className = "contacttext">
             <h1>Hi there!</h1>
             <h2>My name is Cameron Blanchard.</h2>
