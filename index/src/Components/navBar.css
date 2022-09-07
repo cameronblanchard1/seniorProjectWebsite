@@ -16,6 +16,7 @@ header {
     background-color: #233d4d;
     height: 70px;
     color: aliceblue;
+    /* position: fixed; */
 }
 
 nav a {
@@ -85,6 +86,7 @@ header .navclicks {
 
    header .responsive_nav{
     transform: none;
+    /* position: fixed; */
    }
 
    header nav {
