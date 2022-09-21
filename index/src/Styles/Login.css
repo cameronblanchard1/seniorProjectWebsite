@@ -1,65 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@800&display=swap');
 
-.login {
-    font-family: sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 20px;
-    height: 100vh;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    background-color: #f8f9fd;
-  }
-  
-  input[type="text"],
-  input[type="password"] {
-    width: 100px;
-    height: 25px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-  }
-  
-  input[type="submit"] {
-    margin-top: 10px;
-    cursor: pointer;
-    font-size: 15px;
-    background: #01d28e;
-    border: 1px solid #01d28e;
-    color: #fff;
-    padding: 10px 20px;
-  }
-  
-  input[type="submit"]:hover {
-    background: #6cf0c2;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .login-form {
-    background-color: white;
-    padding: 2rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  
-  .list-container {
-    display: flex;
-  }
-  
-  .error {
-    color: red;
-    font-size: 12px;
-  }
-  
-  .title {
-    font-size: 25px;
-    margin-bottom: 20px;
-  }
-  
-  .input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin: 10px;
-  }
+.clapperimage {
+  display: flex; 
+  margin: 0 auto;
+  width: 600px;
+  height: 500px;
+margin-top: 0;
+z-index: -1;
+}
+
+.loginheader{
+  margin: 0 auto;
+  text-align: center;
+  font-size: 70px;
+}
+
+.loginhead {
+  text-align: center;
+  /* padding: 10px; */
+  /* margin: 0 auto; */
+  color: white;
+  position: absolute;
+  top: 270px;
+  left: 670px;
+  z-index: 1;
+}
+
+
+#email {
+  text-align: left;
+  /* padding: 5px; */
+  position: absolute;
+  top: 350px;
+  color: rgb(0, 0, 0);
+  width: 200px;
+  left: 720px;
+  z-index: 1;
+}
+
+#password {
+  text-align: left;
+  /* padding: 5px; */
+  position: absolute;
+  top: 430px;
+  width: 200px;
+  color: rgb(0, 0, 0);
+  left: 720px;
+  z-index: 1;
+}
+
+
+
+#emailtext{
+  z-index: 1;
+  font-size: 25px;
+  top: 345px;
+  left: 550px;
+  color: rgb(255, 255, 255);
+  position: absolute;
+}
+
+#passwordtext{
+  z-index: 1;
+  font-size: 25px;
+  top: 425px;
+  left: 550px;
+  color: white;
+  position: absolute;
+}
+
+#loginbutton{
+  z-index: 1;
+  text-align: center;
+  top: 500px;
+  left: 880px;
+  width: 60px;
+  height: 40px;
+  /* color: white; */
+  position: absolute;
+}
+
