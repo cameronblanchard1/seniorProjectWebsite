@@ -54,6 +54,16 @@ nav .logInButton {
     border: none;
 }
 
+nav .signUpButton {
+    position: fixed;
+    top: 30px;
+    right: 200px;
+    padding: 5px 20px;
+    background-color: #a1c181;
+    cursor: pointer;
+    border: none;
+}
+
 nav .logInButton:active {
     top: 32px;
 }

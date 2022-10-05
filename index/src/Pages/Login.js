@@ -12,8 +12,8 @@ function Login() {
           {/* <image src = {LogInClapper}/> */}
               <h2 className = "loginhead">Login</h2>
               <div>
-              <h6 id="emailtext">Email: </h6>
-              <input type = "email" name = "email" id = "email"/>
+              <h6 id="emailtext">Username: </h6>
+              <input type = "text" name = "email" id = "email"/>
               </div>
               <div>
               <h6 id="passwordtext">Password: </h6>
@@ -34,36 +34,36 @@ function Login() {
 
 
 
-  // const test = {
+  const test = {
     
-  //     username: "user1",
-  //     password: "pass1"
-  //   }
+      username: "user1",
+      password: "pass1"
+    }
 
-  //   const [user, setUser] = useState({name: '', email: ''});
-  //   const [error, setError] = useState('');
+//     const [user, setUser] = useState({name: '', email: ''});
+//     const [error, setError] = useState('');
 
-  //   const Login = details => {
-  //     console.log(details);
-  //   }
+//     const Login = details => {
+//       console.log(details);
+//     }
 
-  //   const Logout = () => {
-  //     console.log("Logout");
-  //   }
+//     const Logout = () => {
+//       console.log("Logout");
+//     }
 
   
 
-  //   return (
-  //   <div className = "Login">
-  //     {/* //if the user email is not null, then render */}
-  //     {(user.email != "") ? (
-  //       <div className = "helloScreen">
-  //         <h2>Hello, <span>{user.name}!</span></h2>
-  //       </div>
-  //   ) : (
-  //     <LoginForm Login = {Login}/>
-  //   )}
-  //   </div>
-//)};
+//     return (
+//     <div className = "Login">
+//       {/* //if the user email is not null, then render */}
+//       {(user.email != "") ? (
+//         <div className = "helloScreen">
+//           <h2>Hello, <span>{user.name}!</span></h2>
+//         </div>
+//     ) : (
+//       <LoginForm Login = {Login}/>
+//     )}
+//     </div>
+// )};
 }
 export default Login;
