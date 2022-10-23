@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "../Styles/Login.css"; 
 import LogInClapper from "./LogInClapper.png";
 import Axios from "axios";
+import { createSearchParams, useNavigate } from "react-router-dom";
 
 function Login() {
 
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,9 +14,14 @@ function Login() {
     Axios.post('http://localhost:3001/login', {
       username: username, 
       password: password
-    }).then(() => {
-      console.log(username);
-    })
+    }).then(response => {
+      if(response.data === "Invalid input. Please try again") {
+        alert("Invalid input. Please try again.")
+        navigate("/Login");
+      }
+    });
+    navigate("/InternalHomePage", {state: {name: username, pass: password}});
+    
   };
       return (
       <form className = "login">

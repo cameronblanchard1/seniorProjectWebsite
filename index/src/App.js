@@ -4,6 +4,7 @@ import Login from "./Pages/Login";
 import Contact from "./Pages/Contact";
 import Navbar from "./Components/Navbar";
 import Signup from "./Pages/Signup";
+import InternalHomePage from "./Pages/InternalHomePage";
 
 function App(){
   return(
@@ -14,6 +15,7 @@ function App(){
         <Route path = "/Contact" element = {<Contact />} />
         <Route path = "/Signup" element = {<Signup />} />
         <Route path = "/Login" element = {<Login />} />
+        <Route path = "/InternalHomePage" element = {<InternalHomePage />} />
       </Routes>
     </Router>
   );

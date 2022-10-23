@@ -1,0 +1,35 @@
+.movieimages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+h3 {
+    align-items: center;
+    display: center;
+}
+
+.words {
+    width: 50%;
+}
+
+.usernameinfo {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.moviespre {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}   

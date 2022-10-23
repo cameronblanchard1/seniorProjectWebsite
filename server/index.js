@@ -13,16 +13,11 @@ const db = mysql.createConnection({
 
 app.use(cors());
 app.use(express.json());
-// app.use(bodyParser.urlencoded({extended: true}));
 
 //turing branch
 //password encryption
 
 
-//logic for login
-//select all usernames
-//make sure entered username matches one of the usernames inside
-//if not, print error
 //if so, allow into site
 
 app.post('/login', (req, res) => {
@@ -44,7 +39,8 @@ app.post('/login', (req, res) => {
                 res.send(results)
             } else{
                 console.log("hello 3")
-                res.send({message: "Invalid input. Please try again"})
+                res.send("Invalid input. Please try again")
+
             }
         }
         console.log(results);
