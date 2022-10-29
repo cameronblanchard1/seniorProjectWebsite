@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import '../Styles/Contact.css';
 import Movie from './Script';
 import {useLocation} from 'react-router-dom';
-
+import { useNavigate, Link } from "react-router-dom";
 
 
 const API ="https://api.themoviedb.org/3/trending/movie/week?api_key=5ad343d5a012d9491667c2c470dc0273";
@@ -12,6 +12,11 @@ const TOP_RATED_API="https://api.themoviedb.org/3/trending/movie/week?api_key=5a
 function InternalHomePage() {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const routeChange = () =>{ 
+    navigate("/PersonalProfile");
+  }
 
   useEffect(()=>{
     fetch(TOP_RATED_API)
@@ -26,9 +31,11 @@ function InternalHomePage() {
   return <div>
     <h2 className = "usernameinfo">Welcome, {location.state.name}!</h2>
     <h3 className= "moviespre">Trending Movies for this week: </h3>
+    <button className='likedbutton'  onClick={routeChange}>Your Rated Movies</button>
     {movies?.length > 0 && movies.map((movie)=>
-  <Movie key={movie.id} {...movie}/>
-  )}</div>
+  <Movie key={movie.id} {...movie}/> 
+  )}
+  </div>
 
   
  

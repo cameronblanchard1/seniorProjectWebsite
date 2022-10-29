@@ -10,17 +10,23 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const submitInformation = () =>{
+  const submitInformation = (event) =>{
+    event.preventDefault();
     Axios.post('http://localhost:3001/login', {
       username: username, 
       password: password
-    }).then(response => {
-      if(response.data === "Invalid input. Please try again") {
-        alert("Invalid input. Please try again.")
+    }).then(res => {
+      if(res.data.message === "Invalid input. Please try again") {
+        alert("Invalid input. Please try again.")  
+        console.log(res.data)
         navigate("/Login");
+      }  else{
+          navigate("/InternalHomePage", {state: {name: username, pass: password}});
+
       }
-    });
-    navigate("/InternalHomePage", {state: {name: username, pass: password}});
+      // navigate("/Contact");
+        });
+    
     
   };
       return (
@@ -47,31 +53,5 @@ function Login() {
       </form>
     )
   
-
-//     const [user, setUser] = useState({name: '', email: ''});
-//     const [error, setError] = useState('');
-
-//     const Login = details => {
-//       console.log(details);
-//     }
-
-//     const Logout = () => {
-//       console.log("Logout");
-//     }
-
-  
-
-//     return (
-//     <div className = "Login">
-//       {/* //if the user email is not null, then render */}
-//       {(user.email != "") ? (
-//         <div className = "helloScreen">
-//           <h2>Hello, <span>{user.name}!</span></h2>
-//         </div>
-//     ) : (
-//       <LoginForm Login = {Login}/>
-//     )}
-//     </div>
-// )};
 }
 export default Login;

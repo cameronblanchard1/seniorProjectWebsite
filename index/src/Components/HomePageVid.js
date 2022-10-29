@@ -1,6 +1,7 @@
 import React from 'react';
 import "../Styles/homePageVid.css";
 import homepagevid from "./homepagevideo.mp4";
+import signup from "../Pages/Signup"
 
 function HomePageVid() {
   return (
@@ -9,7 +10,7 @@ function HomePageVid() {
         <div className='videotext'>
             <h1>MOVIE MAGIC</h1>
             <p>Connect with friends and find your new favorite movie!</p>
-            <p>Don't have an account? Sign up <a className = "signuplink" href = "../Pages/Signup">here.</a></p>
+            <p>Get started now!</p>
             </div>
     </div>
   )

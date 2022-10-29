@@ -5,6 +5,7 @@ import Contact from "./Pages/Contact";
 import Navbar from "./Components/Navbar";
 import Signup from "./Pages/Signup";
 import InternalHomePage from "./Pages/InternalHomePage";
+import PersonalProfile from "./Pages/PersonalProfile";
 
 function App(){
   return(
@@ -16,6 +17,7 @@ function App(){
         <Route path = "/Signup" element = {<Signup />} />
         <Route path = "/Login" element = {<Login />} />
         <Route path = "/InternalHomePage" element = {<InternalHomePage />} />
+        <Route path = "/PersonalProfile" element = {<PersonalProfile />} />
       </Routes>
     </Router>
   );

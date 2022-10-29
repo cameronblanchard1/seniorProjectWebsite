@@ -89,3 +89,24 @@ p {
 body {
     background-color: #a1c181;
 }
+
+.likedbutton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    left: 50%;
+    top: 10px;
+    background-color: #427290;
+    border-radius: 8px;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+
+  }
+
+
+.likedbutton:hover {
+  background-color: #548fb5;
+  outline-color: black;
+}

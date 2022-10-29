@@ -35,11 +35,12 @@ app.post('/login', (req, res) => {
             res.send({err: err});
         } else{
             if(results.length > 0) {
-                console.log("hello 2")
+                console.log("HELLO")
                 res.send(results)
             } else{
                 console.log("hello 3")
-                res.send("Invalid input. Please try again")
+                res.send({message: "Invalid input. Please try again"})
+                console.log(res.data)
 
             }
         }
