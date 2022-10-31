@@ -52,13 +52,40 @@ function PersonalProfile (){
                 {ratings.map((rating, key) => (
                  <h2>{rating.movieName}</h2> 
                 ))}
+                {/* <button className="button" onClick={event => RemoveLike(location.state.name, rating.movieName)}>Remove Liked Movie</button> */}
+
                 <h3>Dislikes</h3>
                 {dislikes.map((dislikes, key) => (
                  <h2>{dislikes.movieName}</h2> 
                 ))}
+                 {/* <button className="button" onClick={event => RemoveDisike(location.state.name, rating.movieName)}>Remove Liked Movie</button> */}
+
             </div>
         );
 
+
+
+        // function RemoveLike (event, {title}){
+
+        //     console.log(title)
+        //     event.preventDefault();
+        //     Axios.post('http://localhost:3001/dislikes', {
+        //       movietitle: title,
+        //       username: "cameron"
+        //     }).then();
+        // }
+        
+
+
+        // function RemoveDisike (event, {title}){
+
+        //     console.log(title)
+        //     event.preventDefault();
+        //     Axios.post('http://localhost:3001/dislikes', {
+        //       movietitle: title,
+        //       username: "cameron"
+        //     }).then();
+        // }
 
 
 

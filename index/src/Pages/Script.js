@@ -20,22 +20,14 @@ const Movie =({title, backdrop_path, vote_average, overview})=>
 );
 
 
+// function LocationComponent() {
+//     const location = useLocation()
+//     console.log(location.state.name)
+//   }
 
-// const Likemovie = (event, {title}) => {  
-//     console.log({title})
-//     event.preventDefault();
-//     Axios.post('http://localhost:3001/likes', {
-//       movietitle: {title}
-//     }).then();
-
-
-
-// }
-
-
-
+// TO BE DONE HERE: FIND A WAY TO SEND USERNAME FROM INTERNAL HOME PAGE OR PERSONAL PROFILE LOCATION.STATE.NAME TO HERE
 function Likemovie (event, {title}){
-
+    // LocationComponent();
     console.log(title)
     event.preventDefault();
     Axios.post('http://localhost:3001/likes', {

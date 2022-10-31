@@ -129,6 +129,116 @@ app.post("/yourdislikes", (req, res) => {
     })
 });
 
+app.post("/pending", (req, res) => {
+    const username = req.body.username;
+    const pendingfriend = req.body.pendingfriend;
+    console.log(username)
+    console.log(pendingfriend)
+
+    const sqlInsert = "INSERT INTO SeniorProjectDatabase.pendingRequests (senderusername, pendingfriend) VALUES (?, ?)";
+    db.query(sqlInsert, [username, pendingfriend], (err, results) => {
+        if (err) throw err;
+        res.send(results);
+        console.log("success");
+        // console.log(results);
+    })
+});
+
+
+app.post("/yourpendingrequests", (req, res) => {
+    const username = req.body.username;
+    console.log(username)
+    db.query("SELECT * FROM SeniorProjectDatabase.pendingRequests WHERE pendingfriend = ?", [username], (err, results) =>    {
+       console.log("in pending request")
+        res.send(results)
+    })
+});
+
+
+app.post("/yoursentrequests", (req, res) => {
+    const username = req.body.username;
+    console.log(username)
+    db.query("SELECT * FROM SeniorProjectDatabase.pendingRequests WHERE senderusername = ?", [username], (err, results) =>    {
+       console.log(results)
+        res.send(results)
+    })
+});
+
+
+app.post("/yoursentrequests", (req, res) => {
+    const username = req.body.username;
+    console.log(username)
+    db.query("SELECT * FROM SeniorProjectDatabase.pendingRequests WHERE senderusername = ?", [username], (err, results) =>    {
+       console.log(results)
+        res.send(results)
+    })
+});
+
+
+app.post("/addfriends", (req, res) => {
+    const friend1 = req.body.friend1;
+    const friend2 =req.body.friend2;
+    // console.log(username)
+    const sqlInsert = "INSERT INTO SeniorProjectDatabase.friends (friendone, friendtwo) VALUES (?, ?)";
+    db.query(sqlInsert, [friend1, friend2], (err, results) => {
+        if (err) throw err;
+        // res.send(results);
+        console.log("successfully added friends");
+        // console.log(results);
+    })
+
+    const sqlDelete = "DELETE FROM  SeniorProjectDatabase.pendingRequests WHERE senderusername = ? AND pendingfriend = ?"
+    db.query(sqlDelete, [friend1, friend2], (err, results) => {
+        if (err) throw err;
+        // res.send(results);
+        console.log("successfully deleted from pending");
+        // console.log(results);
+    })
+
+    const sqlDelete2 = "DELETE FROM  SeniorProjectDatabase.pendingRequests WHERE senderusername = ? AND pendingfriend = ?"
+    db.query(sqlDelete2, [friend2, friend1], (err, results) => {
+        if (err) throw err;
+        // res.send(results);
+        console.log("successfully deleted from pending");
+        // console.log(results);
+    })
+});
+
+
+
+app.post("/rejectrequest", (req, res) => {
+    const friend1 = req.body.friend1;
+    const friend2 =req.body.friend2;
+    // console.log(username)
+
+    const sqlDelete = "DELETE FROM  SeniorProjectDatabase.pendingRequests WHERE senderusername = ? AND pendingfriend = ?"
+    db.query(sqlDelete, [friend1, friend2], (err, results) => {
+        if (err) throw err;
+        // res.send(results);
+        console.log("successfully deleted from pending");
+        // console.log(results);
+    })
+
+    const sqlDelete2 = "DELETE FROM  SeniorProjectDatabase.pendingRequests WHERE senderusername = ? AND pendingfriend = ?"
+    db.query(sqlDelete2, [friend2, friend1], (err, results) => {
+        if (err) throw err;
+        // res.send(results);
+        console.log("successfully deleted from pending");
+        // console.log(results);
+    })
+
+
+
+
+});
+
+
+
+
+
+
+
+
 
 app.listen(3001, () => {
     console.log("Listening on port 3001");
