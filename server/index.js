@@ -68,9 +68,9 @@ app.post("/register", (req, res) => {
     })
 });
 
-app.listen(3001, () => {
-    console.log("Listening on port 3001");
-});
+// app.listen(3001, () => {
+//     console.log("Listening on port 3001");
+// });
 
 // app.get("/", (req, res) => {
     //testing to make sure the database properly connected
@@ -81,3 +81,55 @@ app.listen(3001, () => {
     // })
 
 // });
+
+app.post("/likes", (req, res) => {
+    const movietitle1 = req.body.movietitle;
+    const username1 = req.body.username;
+    console.log(movietitle1)
+    console.log(username1)
+
+    const sqlInsert = "INSERT INTO SeniorProjectDatabase.likedMovies (username, movieName) VALUES (?,?)";
+    db.query(sqlInsert, [username1, movietitle1], (err, results) => {
+        if (err) throw err;
+        console.log("success");
+        // console.log(results);
+    })
+});
+
+app.post("/dislikes", (req, res) => {
+    const movietitle1 = req.body.movietitle;
+    const username1 = req.body.username;
+    console.log(movietitle1)
+    console.log(username1)
+
+    const sqlInsert = "INSERT INTO SeniorProjectDatabase.dislikedMovies (username, movieName) VALUES (?,?)";
+    db.query(sqlInsert, [username1, movietitle1], (err, results) => {
+        if (err) throw err;
+        console.log("success");
+        // console.log(results);
+    })
+});
+
+
+app.post("/yourmovies", (req, res) => {
+    const username1 = req.body.username3;
+    console.log(username1)
+    db.query("SELECT * FROM `SeniorProjectDatabase`.`likedMovies` WHERE username = ?", [username1], (err, results) =>    {
+       console.log(results)
+        res.send(results)
+    })
+});
+
+app.post("/yourdislikes", (req, res) => {
+    const username1 = req.body.username3;
+    console.log(username1)
+    db.query("SELECT * FROM `SeniorProjectDatabase`.`dislikedMovies` WHERE username = ?", [username1], (err, results) =>    {
+       console.log(results)
+        res.send(results)
+    })
+});
+
+
+app.listen(3001, () => {
+    console.log("Listening on port 3001");
+});
