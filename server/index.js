@@ -14,11 +14,6 @@ const db = mysql.createConnection({
 app.use(cors());
 app.use(express.json());
 
-//turing branch
-//password encryption
-
-
-//if so, allow into site
 
 app.post('/login', (req, res) => {
     const username2 = req.body.username;
@@ -27,7 +22,6 @@ app.post('/login', (req, res) => {
     console.log("hello 1")
     console.log(username2)
     console.log(password2)
-    const sqlSelect = "SELECT * FROM `SeniorProjectDatabase`.`userInfo` WHERE username = ? AND password = ?";
 
    db.query("SELECT * FROM `SeniorProjectDatabase`.`userInfo` WHERE username = ? AND password = ?", [username2, password2], (err, results) =>    {
 
@@ -46,6 +40,7 @@ app.post('/login', (req, res) => {
         }
         console.log(results);
     })
+
 });
 
 
@@ -55,32 +50,15 @@ app.post('/login', (req, res) => {
 //if not, THEN insert and allow into site
 //remove form from  url
 
-
-
 app.post("/register", (req, res) => {
     const username1 = req.body.username;
     const password1 = req.body.password;
     const sqlInsert = "INSERT INTO `SeniorProjectDatabase`.`userInfo` (username, password) VALUES (?,?)";
     db.query(sqlInsert, [username1, password1], (err, results) => {
         if (err) throw err;
-        console.log(username1);
-        // console.log(results);
-    })
+        console.log(username1);    })
 });
 
-// app.listen(3001, () => {
-//     console.log("Listening on port 3001");
-// });
-
-// app.get("/", (req, res) => {
-    //testing to make sure the database properly connected
-    // const sqlInsert = "INSERT INTO `SeniorProjectDatabase`.`userInfo` (`username`, `password`) VALUES ('innode', 'testingautoincrement');"
-    // db.query(sqlInsert, (err, results) => {
-    //     if (err) throw err;
-    //     res.send(results);
-    // })
-
-// });
 
 app.post("/likes", (req, res) => {
     const movietitle1 = req.body.movietitle;

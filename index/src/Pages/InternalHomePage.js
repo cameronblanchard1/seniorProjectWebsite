@@ -115,10 +115,6 @@ function InternalHomePage() {
           alert("Request Denied"),
           navigate("/InternalHomePage", {state: {name: location.state.name}})
          )
-
-
-
-
       }
 
   
@@ -141,7 +137,7 @@ function InternalHomePage() {
     {pendings.map((pending, key) => (
             <div>
               <h6>{pending.senderusername}</h6> 
-              <h6>{key}</h6>
+              {/* <h6>{key}</h6> */}
               {/* <h6>{pendings[0]}</h6> */}
               <button onClick={event => AcceptFriend(event, {key})}>Accept</button>
               <button onClick={event => DeclineFriend(event, {key})}>Decline</button>
@@ -153,9 +149,9 @@ function InternalHomePage() {
     <h3 className= "moviespre">Trending Movies for this week: </h3>
     <button className='likedbutton'  onClick={routeChange}>Your Rated Movies</button>
     {movies?.length > 0 && movies.map((movie)=>
-    <Movie key={movie.id} {...movie}/> 
-  
-  )}
+      <Movie  key={movie.id} {...movie}/> 
+      // <Movie  key={1} {...location.state.name}/>
+)}
   </div>
 
   

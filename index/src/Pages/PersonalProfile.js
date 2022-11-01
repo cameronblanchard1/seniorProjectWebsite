@@ -13,15 +13,8 @@ function PersonalProfile (){
     Axios.post('http://localhost:3001/yourmovies', {
       username3: location.state.name
     }).then(res => {
-        // console.log(res.data)
         console.log(res.data.length)
-        //try a for loop with size less than res.data
-        // for (let i = 0; i < 1; i++) {
-        //     setRatings(res.data);
-        //     return;
-        // } 
         setRatings(res.data);
-        // });
     })
     },[]);
     
