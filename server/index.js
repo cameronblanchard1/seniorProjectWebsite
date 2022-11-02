@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
-const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const db = mysql.createConnection({
@@ -29,7 +28,6 @@ app.post('/login', (req, res) => {
             res.send({err: err});
         } else{
             if(results.length > 0) {
-                console.log("HELLO")
                 res.send(results)
             } else{
                 console.log("hello 3")
@@ -53,10 +51,26 @@ app.post('/login', (req, res) => {
 app.post("/register", (req, res) => {
     const username1 = req.body.username;
     const password1 = req.body.password;
-    const sqlInsert = "INSERT INTO `SeniorProjectDatabase`.`userInfo` (username, password) VALUES (?,?)";
-    db.query(sqlInsert, [username1, password1], (err, results) => {
-        if (err) throw err;
-        console.log(username1);    })
+
+    db.query("SELECT * FROM `SeniorProjectDatabase`.`userInfo` WHERE username = ?", [username1], (err, results) =>    {
+        console.log("in sign up")
+        console.log(username1)
+        console.log(results)
+        if (results.length > 0){
+            console.log("this ran")
+            res.send("2") 
+        } else {
+            console.log("in sign up if")
+            const sqlInsert = "INSERT INTO `SeniorProjectDatabase`.`userInfo` (username, password) VALUES (?,?)";
+            db.query(sqlInsert, [username1, password1], (err, results) => {
+                if (err) throw err;
+                console.log(username1);  
+                res.send("1")  
+            }) 
+        }
+     })
+
+
 });
 
 
@@ -204,13 +218,27 @@ app.post("/rejectrequest", (req, res) => {
         console.log("successfully deleted from pending");
         // console.log(results);
     })
-
-
-
-
 });
 
+app.post("/getfriendone", (req, res) => {
+    const friendone = req.body.friendone;
+    // console.log(friendone)
+    db.query("SELECT * FROM SeniorProjectDatabase.friends WHERE friendone = ?", [friendone], (err, results) =>    {
+        console.log("in friend one")
+       console.log(results)
+        res.send(results)
+    })
+});
 
+app.post("/getfriendtwo", (req, res) => {
+    const friendtwo = req.body.friendtwo;
+    // console.log(friendtwo)
+    db.query("SELECT * FROM SeniorProjectDatabase.friends WHERE friendtwo = ?", [friendtwo], (err, results) =>    {
+        console.log("in friend two")
+       console.log(results)
+        res.send(results)
+    })
+});
 
 
 

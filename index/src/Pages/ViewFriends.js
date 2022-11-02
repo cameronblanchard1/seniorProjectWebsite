@@ -3,15 +3,16 @@ import '../Styles/Contact.css';
 import {useLocation} from 'react-router-dom';
 import Axios from "axios";
 
-function PersonalProfile (){
+function ViewFriends (){
 
     const [ratings, setRatings] = useState([]);
     const [dislikes, setDislikes] = useState([]);
     const location = useLocation();
-    console.log(location.state.name)
+    console.log(location.state.param)
+
     useEffect(() => {
     Axios.post('http://localhost:3001/yourmovies', {
-      username3: location.state.name
+      username3: location.state.param
     }).then(res => {
         console.log(res.data.length)
         setRatings(res.data);
@@ -20,7 +21,7 @@ function PersonalProfile (){
     
     useEffect(() => {
         Axios.post('http://localhost:3001/yourdislikes', {
-          username3: location.state.name
+          username3: location.state.param
         }).then(res => {
             // console.log(res.data)
             console.log(res.data.length)
@@ -36,12 +37,10 @@ function PersonalProfile (){
 
 
 
-
-
         return(
             <div>
-                <h2>{location.state.name}'s Ratings</h2>
-                <h3>Likes</h3>
+            <h2>Your Friend {location.state.param}'s Likes</h2>
+            <h3>Likes</h3>
                 {ratings.map((rating, key) => (
                  <h2>{rating.movieName}</h2> 
                 ))}
@@ -53,12 +52,7 @@ function PersonalProfile (){
                 ))}
                  {/* <button className="button" onClick={event => RemoveDisike(location.state.name, rating.movieName)}>Remove Liked Movie</button> */}
 
-            </div>
+                </div>
         );
-
-
-
-
 }
-
-export default PersonalProfile;
+export default ViewFriends;

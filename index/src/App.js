@@ -6,6 +6,8 @@ import Navbar from "./Components/Navbar";
 import Signup from "./Pages/Signup";
 import InternalHomePage from "./Pages/InternalHomePage";
 import PersonalProfile from "./Pages/PersonalProfile";
+import FriendsPage from "./Pages/FriendsPage";
+import ViewFriends from "./Pages/ViewFriends";
 
 function App(){
   return(
@@ -18,6 +20,10 @@ function App(){
         <Route path = "/Login" element = {<Login />} />
         <Route path = "/InternalHomePage" element = {<InternalHomePage />} />
         <Route path = "/PersonalProfile" element = {<PersonalProfile />} />
+        <Route path = "/FriendsPage" element = {<FriendsPage />} />
+        <Route path = "/ViewFriends" element = {<ViewFriends />} />
+
+
       </Routes>
     </Router>
   );

@@ -25,6 +25,11 @@ function InternalHomePage() {
     navigate("/PersonalProfile", {state: {name: location.state.name}})
   }
 
+  const routeChange2 = (event) =>{ 
+    event.preventDefault();
+    navigate("/FriendsPage", {state: {name: location.state.name}})
+  }
+
   useEffect(()=>{
     fetch(TOP_RATED_API)
       .then((res)=>res.json())
@@ -148,6 +153,8 @@ function InternalHomePage() {
 
     <h3 className= "moviespre">Trending Movies for this week: </h3>
     <button className='likedbutton'  onClick={routeChange}>Your Rated Movies</button>
+    <button className='likedbutton'  onClick={routeChange2}>Your Friends' Rated Movies</button>
+
     {movies?.length > 0 && movies.map((movie)=>
       <Movie  key={movie.id} {...movie}/> 
       // <Movie  key={1} {...location.state.name}/>

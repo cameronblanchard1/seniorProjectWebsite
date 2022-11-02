@@ -2,18 +2,32 @@ import React, { useState, useEffect } from "react";
 import "../Styles/Login.css"; 
 import LogInClapper from "./LogInClapper.png";
 import Axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
+
 
 function Signup() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const submitInformation = () =>{
+  const submitInformation = (event) =>{
+    event.preventDefault();
     Axios.post('http://localhost:3001/register', {
       username: username, 
       password: password
-    }).then(() => {
-      alert("Successfully signed up!")
+    }).then(res => {
+        console.log("back in js")
+        console.log(res.data)
+        if(res.data === 2) {
+          alert("Username taken. Please try again.")  
+          // console.log(res.data)
+          navigate("/Signup");
+        }  else{
+          alert("Successfully signed up! Please sign in!");
+          navigate("/Login");  
+        }
+
     })
   };
 
