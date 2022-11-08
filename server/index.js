@@ -22,8 +22,8 @@ app.post('/login', (req, res) => {
     console.log(username2)
     console.log(password2)
 
-   db.query("SELECT * FROM `SeniorProjectDatabase`.`userInfo` WHERE username = ? AND password = ?", [username2, password2], (err, results) =>    {
-
+   //db.query("SELECT * FROM `SeniorProjectDatabase`.`userInfo` WHERE username = ? AND password = ?", [username2, password2], (err, results) =>    {
+    db.query("SELECT username FROM SeniorProjectDatabase.userInfo WHERE username = ? AND password = sha2(?, 224)", [username2, password2], (err, results) =>    {
         if (err) {
             res.send({err: err});
         } else{
@@ -32,6 +32,7 @@ app.post('/login', (req, res) => {
             } else{
                 console.log("hello 3")
                 res.send({message: "Invalid input. Please try again"})
+                console.log(results)
                 console.log(res.data)
 
             }
@@ -61,7 +62,8 @@ app.post("/register", (req, res) => {
             res.send("2") 
         } else {
             console.log("in sign up if")
-            const sqlInsert = "INSERT INTO `SeniorProjectDatabase`.`userInfo` (username, password) VALUES (?,?)";
+            //const sqlInsert = "INSERT INTO `SeniorProjectDatabase`.`userInfo` (username, password) VALUES (?,?)";
+            const sqlInsert ="INSERT INTO SeniorProjectDatabase.userInfo (username, password) VALUES (?, SHA2(?, 224))";
             db.query(sqlInsert, [username1, password1], (err, results) => {
                 if (err) throw err;
                 console.log(username1);  
