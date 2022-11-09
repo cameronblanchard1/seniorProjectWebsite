@@ -11,7 +11,7 @@ const db = mysql.createConnection({
 });
 
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
 

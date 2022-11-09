@@ -13,7 +13,7 @@ function Signup() {
 
   const submitInformation = (event) =>{
     event.preventDefault();
-    Axios.post('https://git.heroku.com/lets-make-movie-magic.git/register', {
+    Axios.post('https://lets-make-movie-magic.herokuapp.com/register', {
       username: username, 
       password: password
     }).then(res => {
