@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
-const cors = require('cors');
+// const cors = require('cors');
 
 const db = mysql.createConnection({
     host: "us-cdbr-east-06.cleardb.net", 
@@ -10,14 +10,16 @@ const db = mysql.createConnection({
     database: "heroku_907cf6e593e285e"
 });
 
-
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-//   });
+console.log("Connection established")
 
 app.use(cors());
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 app.use(express.json());
 
 

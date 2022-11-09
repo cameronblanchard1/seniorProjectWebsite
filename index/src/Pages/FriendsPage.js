@@ -22,7 +22,7 @@ function FriendsPage (){
       }
 
     useEffect(() => {
-        Axios.post('https://git.heroku.com/lets-make-movie-magic.git/getfriendone', {
+        Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/getfriendone', {
           friendone: location.state.name
         }).then(res => {
             console.log(res.data.length)
@@ -32,7 +32,7 @@ function FriendsPage (){
 
         useEffect(() => {
             console.log("called 2")
-            Axios.post('https://git.heroku.com/lets-make-movie-magic.git/getfriendtwo', {
+            Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/getfriendtwo', {
               friendtwo: location.state.name
             }).then(res => {
                 console.log("friend two")

@@ -12,7 +12,7 @@ function Login() {
 
   const submitInformation = (event) =>{
     event.preventDefault();
-    Axios.post('https://git.heroku.com/lets-make-movie-magic.git/login', {
+    Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/login', {
       username: username, 
       password: password
     }).then(res => {

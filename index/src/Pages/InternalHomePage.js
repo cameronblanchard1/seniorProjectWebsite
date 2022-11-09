@@ -44,7 +44,7 @@ function InternalHomePage() {
       console.log(frienduser)
       if (frienduser != ""){
       event.preventDefault();
-      Axios.post('http://localhost:3001/pending', {
+      Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/pending', {
         username: user, 
         pendingfriend: frienduser
       }).then(
@@ -58,7 +58,7 @@ function InternalHomePage() {
 
 
   useEffect(() => {
-    Axios.post('https://git.heroku.com/lets-make-movie-magic.gityoursentrequests', {
+    Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/yoursentrequests', {
       username: user
     }).then(res => {
         // console.log(res.data)
@@ -76,7 +76,7 @@ function InternalHomePage() {
 
 
     useEffect(() => {
-      Axios.post('https://git.heroku.com/lets-make-movie-magic.git/yourpendingrequests', {
+      Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/yourpendingrequests', {
         username: user
       }).then(res => {
           // console.log(res.data)
@@ -100,7 +100,7 @@ function InternalHomePage() {
         console.log(pendings[key].pendingfriend)
 
 
-        Axios.post('https://git.heroku.com/lets-make-movie-magic.git/addfriends', {
+        Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/addfriends', {
           friend1: pendings[key].senderusername, 
           friend2: pendings[key].pendingfriend
         }).then(
@@ -113,7 +113,7 @@ function InternalHomePage() {
       const DeclineFriend = (event, {key}) =>{ 
         event.preventDefault();
 
-        Axios.post('https://git.heroku.com/lets-make-movie-magic.git/rejectrequest', {
+        Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/rejectrequest', {
           friend1: pendings[key].senderusername, 
           friend2: pendings[key].pendingfriend
         }).then(
