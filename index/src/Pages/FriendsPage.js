@@ -22,7 +22,7 @@ function FriendsPage (){
       }
 
     useEffect(() => {
-        Axios.post('http://localhost:3001/getfriendone', {
+        Axios.post('https://git.heroku.com/lets-make-movie-magic.git/getfriendone', {
           friendone: location.state.name
         }).then(res => {
             console.log(res.data.length)
@@ -32,7 +32,7 @@ function FriendsPage (){
 
         useEffect(() => {
             console.log("called 2")
-            Axios.post('http://localhost:3001/getfriendtwo', {
+            Axios.post('https://git.heroku.com/lets-make-movie-magic.git/getfriendtwo', {
               friendtwo: location.state.name
             }).then(res => {
                 console.log("friend two")

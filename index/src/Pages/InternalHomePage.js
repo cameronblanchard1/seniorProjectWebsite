@@ -58,7 +58,7 @@ function InternalHomePage() {
 
 
   useEffect(() => {
-    Axios.post('http://localhost:3001/yoursentrequests', {
+    Axios.post('https://git.heroku.com/lets-make-movie-magic.gityoursentrequests', {
       username: user
     }).then(res => {
         // console.log(res.data)
@@ -76,7 +76,7 @@ function InternalHomePage() {
 
 
     useEffect(() => {
-      Axios.post('http://localhost:3001/yourpendingrequests', {
+      Axios.post('https://git.heroku.com/lets-make-movie-magic.git/yourpendingrequests', {
         username: user
       }).then(res => {
           // console.log(res.data)
@@ -100,7 +100,7 @@ function InternalHomePage() {
         console.log(pendings[key].pendingfriend)
 
 
-        Axios.post('http://localhost:3001/addfriends', {
+        Axios.post('https://git.heroku.com/lets-make-movie-magic.git/addfriends', {
           friend1: pendings[key].senderusername, 
           friend2: pendings[key].pendingfriend
         }).then(
@@ -113,7 +113,7 @@ function InternalHomePage() {
       const DeclineFriend = (event, {key}) =>{ 
         event.preventDefault();
 
-        Axios.post('http://localhost:3001/rejectrequest', {
+        Axios.post('https://git.heroku.com/lets-make-movie-magic.git/rejectrequest', {
           friend1: pendings[key].senderusername, 
           friend2: pendings[key].pendingfriend
         }).then(

@@ -10,7 +10,7 @@ function PersonalProfile (){
     const location = useLocation();
     console.log(location.state.name)
     useEffect(() => {
-    Axios.post('http://localhost:3001/yourmovies', {
+    Axios.post('https://git.heroku.com/lets-make-movie-magic.git/yourmovies', {
       username3: location.state.name
     }).then(res => {
         console.log(res.data.length)
@@ -19,7 +19,7 @@ function PersonalProfile (){
     },[]);
     
     useEffect(() => {
-        Axios.post('http://localhost:3001/yourdislikes', {
+        Axios.post('https://git.heroku.com/lets-make-movie-magic.git/yourdislikes', {
           username3: location.state.name
         }).then(res => {
             // console.log(res.data)

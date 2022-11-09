@@ -4,11 +4,12 @@ const mysql = require("mysql");
 const cors = require('cors');
 
 const db = mysql.createConnection({
-    host: "localhost", 
-    user: "root",
-    password: 'password',
-    database: "SeniorProjectDatabase"
+    host: "us-cdbr-east-06.cleardb.net", 
+    user: "bc776534261b7a",
+    password: 'f2bb35e4',
+    database: "heroku_907cf6e593e285e"
 });
+
 
 app.use(cors());
 app.use(express.json());
@@ -23,7 +24,7 @@ app.post('/login', (req, res) => {
     console.log(password2)
 
    //db.query("SELECT * FROM `SeniorProjectDatabase`.`userInfo` WHERE username = ? AND password = ?", [username2, password2], (err, results) =>    {
-    db.query("SELECT username FROM SeniorProjectDatabase.userInfo WHERE username = ? AND password = sha2(?, 224)", [username2, password2], (err, results) =>    {
+    db.query("SELECT username FROM heroku_907cf6e593e285e.userInfo WHERE username = ? AND password = sha2(?, 224)", [username2, password2], (err, results) =>    {
         if (err) {
             res.send({err: err});
         } else{
@@ -53,7 +54,7 @@ app.post("/register", (req, res) => {
     const username1 = req.body.username;
     const password1 = req.body.password;
 
-    db.query("SELECT * FROM `SeniorProjectDatabase`.`userInfo` WHERE username = ?", [username1], (err, results) =>    {
+    db.query("SELECT * FROM `heroku_907cf6e593e285e`.`userInfo` WHERE username = ?", [username1], (err, results) =>    {
         console.log("in sign up")
         console.log(username1)
         console.log(results)
@@ -63,7 +64,7 @@ app.post("/register", (req, res) => {
         } else {
             console.log("in sign up if")
             //const sqlInsert = "INSERT INTO `SeniorProjectDatabase`.`userInfo` (username, password) VALUES (?,?)";
-            const sqlInsert ="INSERT INTO SeniorProjectDatabase.userInfo (username, password) VALUES (?, SHA2(?, 224))";
+            const sqlInsert ="INSERT INTO heroku_907cf6e593e285e.userInfo (username, password) VALUES (?, SHA2(?, 224))";
             db.query(sqlInsert, [username1, password1], (err, results) => {
                 if (err) throw err;
                 console.log(username1);  
@@ -82,7 +83,7 @@ app.post("/likes", (req, res) => {
     console.log(movietitle1)
     console.log(username1)
 
-    const sqlInsert = "INSERT INTO SeniorProjectDatabase.likedMovies (username, movieName) VALUES (?,?)";
+    const sqlInsert = "INSERT INTO heroku_907cf6e593e285e.likedMovies (username, movieName) VALUES (?,?)";
     db.query(sqlInsert, [username1, movietitle1], (err, results) => {
         if (err) throw err;
         console.log("success");
@@ -96,7 +97,7 @@ app.post("/dislikes", (req, res) => {
     console.log(movietitle1)
     console.log(username1)
 
-    const sqlInsert = "INSERT INTO SeniorProjectDatabase.dislikedMovies (username, movieName) VALUES (?,?)";
+    const sqlInsert = "INSERT INTO heroku_907cf6e593e285e.dislikedMovies (username, movieName) VALUES (?,?)";
     db.query(sqlInsert, [username1, movietitle1], (err, results) => {
         if (err) throw err;
         console.log("success");
@@ -108,7 +109,7 @@ app.post("/dislikes", (req, res) => {
 app.post("/yourmovies", (req, res) => {
     const username1 = req.body.username3;
     console.log(username1)
-    db.query("SELECT * FROM `SeniorProjectDatabase`.`likedMovies` WHERE username = ?", [username1], (err, results) =>    {
+    db.query("SELECT * FROM `heroku_907cf6e593e285e`.`likedMovies` WHERE username = ?", [username1], (err, results) =>    {
        console.log(results)
         res.send(results)
     })
@@ -117,7 +118,7 @@ app.post("/yourmovies", (req, res) => {
 app.post("/yourdislikes", (req, res) => {
     const username1 = req.body.username3;
     console.log(username1)
-    db.query("SELECT * FROM `SeniorProjectDatabase`.`dislikedMovies` WHERE username = ?", [username1], (err, results) =>    {
+    db.query("SELECT * FROM `heroku_907cf6e593e285e`.`dislikedMovies` WHERE username = ?", [username1], (err, results) =>    {
        console.log(results)
         res.send(results)
     })
@@ -129,7 +130,7 @@ app.post("/pending", (req, res) => {
     console.log(username)
     console.log(pendingfriend)
 
-    const sqlInsert = "INSERT INTO SeniorProjectDatabase.pendingRequests (senderusername, pendingfriend) VALUES (?, ?)";
+    const sqlInsert = "INSERT INTO heroku_907cf6e593e285e.pendingRequests (senderusername, pendingfriend) VALUES (?, ?)";
     db.query(sqlInsert, [username, pendingfriend], (err, results) => {
         if (err) throw err;
         res.send(results);
@@ -142,7 +143,7 @@ app.post("/pending", (req, res) => {
 app.post("/yourpendingrequests", (req, res) => {
     const username = req.body.username;
     console.log(username)
-    db.query("SELECT * FROM SeniorProjectDatabase.pendingRequests WHERE pendingfriend = ?", [username], (err, results) =>    {
+    db.query("SELECT * FROM heroku_907cf6e593e285e.pendingRequests WHERE pendingfriend = ?", [username], (err, results) =>    {
        console.log("in pending request")
         res.send(results)
     })
@@ -152,7 +153,7 @@ app.post("/yourpendingrequests", (req, res) => {
 app.post("/yoursentrequests", (req, res) => {
     const username = req.body.username;
     console.log(username)
-    db.query("SELECT * FROM SeniorProjectDatabase.pendingRequests WHERE senderusername = ?", [username], (err, results) =>    {
+    db.query("SELECT * FROM heroku_907cf6e593e285e.pendingRequests WHERE senderusername = ?", [username], (err, results) =>    {
        console.log(results)
         res.send(results)
     })
@@ -162,7 +163,7 @@ app.post("/yoursentrequests", (req, res) => {
 app.post("/yoursentrequests", (req, res) => {
     const username = req.body.username;
     console.log(username)
-    db.query("SELECT * FROM SeniorProjectDatabase.pendingRequests WHERE senderusername = ?", [username], (err, results) =>    {
+    db.query("SELECT * FROM heroku_907cf6e593e285e.pendingRequests WHERE senderusername = ?", [username], (err, results) =>    {
        console.log(results)
         res.send(results)
     })
@@ -173,7 +174,7 @@ app.post("/addfriends", (req, res) => {
     const friend1 = req.body.friend1;
     const friend2 =req.body.friend2;
     // console.log(username)
-    const sqlInsert = "INSERT INTO SeniorProjectDatabase.friends (friendone, friendtwo) VALUES (?, ?)";
+    const sqlInsert = "INSERT INTO heroku_907cf6e593e285e.friends (friendone, friendtwo) VALUES (?, ?)";
     db.query(sqlInsert, [friend1, friend2], (err, results) => {
         if (err) throw err;
         // res.send(results);
@@ -181,7 +182,7 @@ app.post("/addfriends", (req, res) => {
         // console.log(results);
     })
 
-    const sqlDelete = "DELETE FROM  SeniorProjectDatabase.pendingRequests WHERE senderusername = ? AND pendingfriend = ?"
+    const sqlDelete = "DELETE FROM  heroku_907cf6e593e285e.pendingRequests WHERE senderusername = ? AND pendingfriend = ?"
     db.query(sqlDelete, [friend1, friend2], (err, results) => {
         if (err) throw err;
         // res.send(results);
@@ -189,7 +190,7 @@ app.post("/addfriends", (req, res) => {
         // console.log(results);
     })
 
-    const sqlDelete2 = "DELETE FROM  SeniorProjectDatabase.pendingRequests WHERE senderusername = ? AND pendingfriend = ?"
+    const sqlDelete2 = "DELETE FROM  heroku_907cf6e593e285e.pendingRequests WHERE senderusername = ? AND pendingfriend = ?"
     db.query(sqlDelete2, [friend2, friend1], (err, results) => {
         if (err) throw err;
         // res.send(results);
@@ -205,7 +206,7 @@ app.post("/rejectrequest", (req, res) => {
     const friend2 =req.body.friend2;
     // console.log(username)
 
-    const sqlDelete = "DELETE FROM  SeniorProjectDatabase.pendingRequests WHERE senderusername = ? AND pendingfriend = ?"
+    const sqlDelete = "DELETE FROM  heroku_907cf6e593e285e.pendingRequests WHERE senderusername = ? AND pendingfriend = ?"
     db.query(sqlDelete, [friend1, friend2], (err, results) => {
         if (err) throw err;
         // res.send(results);
@@ -213,7 +214,7 @@ app.post("/rejectrequest", (req, res) => {
         // console.log(results);
     })
 
-    const sqlDelete2 = "DELETE FROM  SeniorProjectDatabase.pendingRequests WHERE senderusername = ? AND pendingfriend = ?"
+    const sqlDelete2 = "DELETE FROM  heroku_907cf6e593e285e.pendingRequests WHERE senderusername = ? AND pendingfriend = ?"
     db.query(sqlDelete2, [friend2, friend1], (err, results) => {
         if (err) throw err;
         // res.send(results);
@@ -225,7 +226,7 @@ app.post("/rejectrequest", (req, res) => {
 app.post("/getfriendone", (req, res) => {
     const friendone = req.body.friendone;
     // console.log(friendone)
-    db.query("SELECT * FROM SeniorProjectDatabase.friends WHERE friendone = ?", [friendone], (err, results) =>    {
+    db.query("SELECT * FROM heroku_907cf6e593e285e.friends WHERE friendone = ?", [friendone], (err, results) =>    {
         console.log("in friend one")
        console.log(results)
         res.send(results)
@@ -235,7 +236,7 @@ app.post("/getfriendone", (req, res) => {
 app.post("/getfriendtwo", (req, res) => {
     const friendtwo = req.body.friendtwo;
     // console.log(friendtwo)
-    db.query("SELECT * FROM SeniorProjectDatabase.friends WHERE friendtwo = ?", [friendtwo], (err, results) =>    {
+    db.query("SELECT * FROM heroku_907cf6e593e285e.friends WHERE friendtwo = ?", [friendtwo], (err, results) =>    {
         console.log("in friend two")
        console.log(results)
         res.send(results)
@@ -243,11 +244,13 @@ app.post("/getfriendtwo", (req, res) => {
 });
 
 
-
-
-
-
-
-app.listen(3001, () => {
-    console.log("Listening on port 3001");
+app.listen(process.env.PORT || PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
+
+
+
+
+// app.listen(3001, () => {
+//     console.log("Listening on port 3001");
+// });

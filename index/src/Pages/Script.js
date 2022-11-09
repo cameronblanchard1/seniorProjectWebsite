@@ -30,7 +30,7 @@ console.log(title)
 function Likemovie (event, {title}){
     console.log(title)
     event.preventDefault();
-    Axios.post('http://localhost:3001/likes', {
+    Axios.post('https://git.heroku.com/lets-make-movie-magic.git/likes', {
       movietitle: title,
       username: location.state.name
     }).then();
@@ -39,7 +39,7 @@ function Likemovie (event, {title}){
 function Dislikemovie (event, {title}){
     console.log(title)
     event.preventDefault();
-    Axios.post('http://localhost:3001/dislikes', {
+    Axios.post('https://git.heroku.com/lets-make-movie-magic.git/dislikes', {
       movietitle: title,
       username: location.state.name
     }).then();
