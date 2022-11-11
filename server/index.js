@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
-// const cors = require('cors');
+const cors = require('cors');
 
 const db = mysql.createConnection({
     host: "us-cdbr-east-06.cleardb.net", 
@@ -12,7 +12,8 @@ const db = mysql.createConnection({
 
 console.log("Connection established")
 
-// app.use(cors());
+app.use(cors());
+res.header("Access-Control-Allow-Origin", "https://makingmoviemagic.netlify.app"); // update to match the domain you will make the request from
 
 // app.use(function(req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "*");
@@ -24,7 +25,7 @@ app.use(express.json());
 
 
 app.post('/login', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "http://makingmoviemagic.netlify.app"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", "https://makingmoviemagic.netlify.app"); // update to match the domain you will make the request from
 
 
     const username2 = req.body.username;
@@ -57,7 +58,7 @@ app.post('/login', (req, res) => {
 
 
 app.post("/register", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "http://makingmoviemagic.netlify.app"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", "https://makingmoviemagic.netlify.app"); // update to match the domain you will make the request from
     const username1 = req.body.username;
     const password1 = req.body.password;
 

@@ -37,7 +37,7 @@ function Signup() {
         <img className = "clapperimage" src = {LogInClapper} alt = "directors clapper" />
         <div className="test">
           {/* <image src = {LogInClapper}/> */}
-              <h2 className = "loginhead">Sign Up</h2>
+              <h2 className = "loginhead">Sign Up TESTING 3</h2>
               <div>
               <h6 id="emailtext">Username: </h6>
               <input type = "text" name = "username" id = "email" onChange={(e) => {
