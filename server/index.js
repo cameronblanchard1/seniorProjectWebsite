@@ -12,18 +12,21 @@ const db = mysql.createConnection({
 
 console.log("Connection established")
 
-app.use(cors());
+// app.use(cors());
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+//   });
 
 app.use(express.json());
 
 
 app.post('/login', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+
+
     const username2 = req.body.username;
     const password2 = req.body.password;
     //checking to make sure user and pass exist
@@ -59,6 +62,7 @@ app.post('/login', (req, res) => {
 //remove form from  url
 
 app.post("/register", (req, res) => {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
     const username1 = req.body.username;
     const password1 = req.body.password;
 
@@ -252,13 +256,13 @@ app.post("/getfriendtwo", (req, res) => {
 });
 
 
-app.listen(process.env.PORT || PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+app.listen(process.env.PORT || 8080, () => {
+    console.log("Server running");
 });
 
 
 
 
-// app.listen(3001, () => {
+// app.listen(8080, () => {
 //     console.log("Listening on port 3001");
 // });

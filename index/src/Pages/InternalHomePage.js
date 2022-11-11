@@ -44,7 +44,7 @@ function InternalHomePage() {
       console.log(frienduser)
       if (frienduser != ""){
       event.preventDefault();
-      Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/pending', {
+      Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/pending', {
         username: user, 
         pendingfriend: frienduser
       }).then(
@@ -58,7 +58,7 @@ function InternalHomePage() {
 
 
   useEffect(() => {
-    Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/yoursentrequests', {
+    Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/yoursentrequests', {
       username: user
     }).then(res => {
         // console.log(res.data)
@@ -76,7 +76,7 @@ function InternalHomePage() {
 
 
     useEffect(() => {
-      Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/yourpendingrequests', {
+      Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/yourpendingrequests', {
         username: user
       }).then(res => {
           // console.log(res.data)
@@ -100,7 +100,7 @@ function InternalHomePage() {
         console.log(pendings[key].pendingfriend)
 
 
-        Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/addfriends', {
+        Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/addfriends', {
           friend1: pendings[key].senderusername, 
           friend2: pendings[key].pendingfriend
         }).then(
@@ -113,7 +113,7 @@ function InternalHomePage() {
       const DeclineFriend = (event, {key}) =>{ 
         event.preventDefault();
 
-        Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/rejectrequest', {
+        Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/rejectrequest', {
           friend1: pendings[key].senderusername, 
           friend2: pendings[key].pendingfriend
         }).then(

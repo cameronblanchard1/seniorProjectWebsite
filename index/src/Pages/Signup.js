@@ -13,7 +13,7 @@ function Signup() {
 
   const submitInformation = (event) =>{
     event.preventDefault();
-    Axios.post('https://cors-anywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/register', {
+    Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/register', {
       username: username, 
       password: password
     }).then(res => {
