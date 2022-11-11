@@ -24,7 +24,7 @@ app.use(express.json());
 
 
 app.post('/login', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", "http://makingmoviemagic.netlify.app"); // update to match the domain you will make the request from
 
 
     const username2 = req.body.username;
@@ -57,7 +57,7 @@ app.post('/login', (req, res) => {
 
 
 app.post("/register", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://makingmoviemagic.netlify.app"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", "http://makingmoviemagic.netlify.app"); // update to match the domain you will make the request from
     const username1 = req.body.username;
     const password1 = req.body.password;
 
