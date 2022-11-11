@@ -56,13 +56,8 @@ app.post('/login', (req, res) => {
 
 
 
-//remaining logic for sign up
-//make sure the username isnt already taken
-//if not, THEN insert and allow into site
-//remove form from  url
-
 app.post("/register", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", "https://makingmoviemagic.netlify.app"); // update to match the domain you will make the request from
     const username1 = req.body.username;
     const password1 = req.body.password;
 
