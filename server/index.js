@@ -5,14 +5,14 @@ const cors = require('cors');
 
 const db = mysql.createConnection({
     host: "us-cdbr-east-06.cleardb.net", 
-    user: "bc776534261b7a",
-    password: 'f2bb35e4',
-    database: "heroku_907cf6e593e285e"
+    user: "b15b75ea8ed0ce",
+    password: '3eacf82c',
+    database: "heroku_4bdc2246fa66f64"
 });
 
 console.log("Connection established")
 
-
+mysql://b15b75ea8ed0ce:3eacf82c@us-cdbr-east-06.cleardb.net/heroku_4bdc2246fa66f64?reconnect=true
   
   app.use(cors())
 
@@ -43,7 +43,7 @@ app.post('/login', (req, res) => {
     console.log(password2)
 
    //db.query("SELECT * FROM `SeniorProjectDatabase`.`userInfo` WHERE username = ? AND password = ?", [username2, password2], (err, results) =>    {
-    db.query("SELECT username FROM heroku_907cf6e593e285e.userInfo WHERE username = ? AND password = sha2(?, 224)", [username2, password2], (err, results) =>    {
+    db.query("SELECT username FROM heroku_4bdc2246fa66f64.userinfo WHERE username = ? AND password = sha2(?, 224)", [username2, password2], (err, results) =>    {
         if (err) {
             res.send({err: err});
         } else{
@@ -71,7 +71,7 @@ app.post("/register", (req, res) => {
     const username1 = req.body.username;
     const password1 = req.body.password;
 
-    db.query("SELECT * FROM `heroku_907cf6e593e285e`.`userInfo` WHERE username = ?", [username1], (err, results) =>    {
+    db.query("SELECT * FROM `heroku_4bdc2246fa66f64`.`userinfo` WHERE username = ?", [username1], (err, results) =>    {
         console.log("in sign up")
         console.log(username1)
         console.log(results)
@@ -81,7 +81,7 @@ app.post("/register", (req, res) => {
         } else {
             console.log("in sign up if")
             //const sqlInsert = "INSERT INTO `SeniorProjectDatabase`.`userInfo` (username, password) VALUES (?,?)";
-            const sqlInsert ="INSERT INTO heroku_907cf6e593e285e.userInfo (username, password) VALUES (?, SHA2(?, 224))";
+            const sqlInsert ="INSERT INTO heroku_4bdc2246fa66f64.userinfo (username, password) VALUES (?, SHA2(?, 224))";
             db.query(sqlInsert, [username1, password1], (err, results) => {
                 if (err) throw err;
                 console.log(username1);  
