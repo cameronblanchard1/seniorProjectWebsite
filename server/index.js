@@ -12,9 +12,20 @@ const db = mysql.createConnection({
 
 console.log("Connection established")
 
-mysql://b15b75ea8ed0ce:3eacf82c@us-cdbr-east-06.cleardb.net/heroku_4bdc2246fa66f64?reconnect=true
-  
-  app.use(cors())
+const whitelist = ["https://making-movie-magic.herokuapp.com"]
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
+  credentials: true,
+}
+app.use(cors(corsOptions))
+
+//app.use(cors())
 
 // res.header("Access-Control-Allow-Origin", "https://makingmoviemagic.netlify.app"); 
 

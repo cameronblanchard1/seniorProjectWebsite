@@ -14,7 +14,7 @@ function Signup() {
   const submitInformation = (event) =>{
     event.preventDefault();
     //changed from https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/register
-    Axios.post('https://making-movie-magic.herokuapp.com/register', {
+    Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/register', {
       username: username, 
       password: password
     }).then(res => {
