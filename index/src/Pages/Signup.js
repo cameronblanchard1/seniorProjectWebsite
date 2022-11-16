@@ -13,7 +13,8 @@ function Signup() {
 
   const submitInformation = (event) =>{
     event.preventDefault();
-    Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/register', {
+    //changed from https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/register
+    Axios.post('/api/register', {
       username: username, 
       password: password
     }).then(res => {
