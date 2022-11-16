@@ -65,7 +65,9 @@ app.post('/login', (req, res) => {
 
 
 app.post("/register", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://63746204edf6d57667bd5048--makingmoviemagic.netlify.app/"); 
+    res.setHeader("Access-Control-Allow-Origin", "*"); 
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.setHeader('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
     const username1 = req.body.username;
     const password1 = req.body.password;
 
