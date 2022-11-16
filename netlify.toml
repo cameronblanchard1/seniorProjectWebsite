@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "https://makingmoviemagic.netlify.app”"
-  to = "https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/register"
-  status = 200
+ from = '/*'
+ to = '/index.html'
+ status = 200

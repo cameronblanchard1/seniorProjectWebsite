@@ -13,12 +13,13 @@ const db = mysql.createConnection({
 console.log("Connection established")
 
 app.use(cors());
-res.header("Access-Control-Allow-Origin", "https://makingmoviemagic.netlify.app"); // update to match the domain you will make the request from
+// res.header("Access-Control-Allow-Origin", "https://makingmoviemagic.netlify.app"); 
 
 // app.use(function(req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "*");
 //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //     next();
+//     console.log(res.header)
 //   });
 
 app.use(express.json());
@@ -26,7 +27,6 @@ app.use(express.json());
 
 app.post('/login', (req, res) => {
     res.header("Access-Control-Allow-Origin", "https://makingmoviemagic.netlify.app"); // update to match the domain you will make the request from
-
 
     const username2 = req.body.username;
     const password2 = req.body.password;
