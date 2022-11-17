@@ -5,27 +5,19 @@ const cors = require('cors');
 
 const db = mysql.createConnection({
     host: "us-cdbr-east-06.cleardb.net", 
-    user: "b15b75ea8ed0ce",
-    password: '3eacf82c',
-    database: "heroku_4bdc2246fa66f64"
+    user: "bc776534261b7a",
+    password: 'f2bb35e4',
+    database: "heroku_907cf6e593e285e"
 });
 
 console.log("Connection established")
 
-const whitelist = ["https://making-movie-magic.herokuapp.com"]
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error("Not allowed by CORS"))
-    }
-  },
-  credentials: true,
-}
-app.use(cors(corsOptions))
+setInterval(function () {
+    db.query('SELECT 1');
+}, 5000);
 
-//app.use(cors())
+mysql://bc776534261b7a:f2bb35e4@us-cdbr-east-06.cleardb.net/heroku_907cf6e593e285e?reconnect=true
+// app.use(cors())
 
 // res.header("Access-Control-Allow-Origin", "https://makingmoviemagic.netlify.app"); 
 
@@ -35,6 +27,7 @@ app.use(cors(corsOptions))
 //     next();
 //     console.log(res.header)
 //   });
+app.use(cors());
 
 app.use(express.json());
 
@@ -43,18 +36,19 @@ app.post('/login', (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*"); 
     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.setHeader('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-
+    console.log("hello 2");
+    console.log(res.header);
 
 
     const username2 = req.body.username;
     const password2 = req.body.password;
-    //checking to make sure user and pass exist
-    console.log("hello 1")
+
+    console.log(username2)
     console.log(username2)
     console.log(password2)
 
    //db.query("SELECT * FROM `SeniorProjectDatabase`.`userInfo` WHERE username = ? AND password = ?", [username2, password2], (err, results) =>    {
-    db.query("SELECT username FROM heroku_4bdc2246fa66f64.userinfo WHERE username = ? AND password = sha2(?, 224)", [username2, password2], (err, results) =>    {
+    db.query("SELECT username FROM heroku_907cf6e593e285e.userinfo WHERE username = ? AND password = sha2(?, 224)", [username2, password2], (err, results) =>    {
         if (err) {
             res.send({err: err});
         } else{
@@ -76,13 +70,13 @@ app.post('/login', (req, res) => {
 
 
 app.post("/register", (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*"); 
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.setHeader('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+    // res.setHeader("Access-Control-Allow-Origin", "*"); 
+    // res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    // res.setHeader('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
     const username1 = req.body.username;
     const password1 = req.body.password;
 
-    db.query("SELECT * FROM `heroku_4bdc2246fa66f64`.`userinfo` WHERE username = ?", [username1], (err, results) =>    {
+    db.query("SELECT * FROM `heroku_907cf6e593e285e`.`userinfo` WHERE username = ?", [username1], (err, results) =>    {
         console.log("in sign up")
         console.log(username1)
         console.log(results)
@@ -92,7 +86,7 @@ app.post("/register", (req, res) => {
         } else {
             console.log("in sign up if")
             //const sqlInsert = "INSERT INTO `SeniorProjectDatabase`.`userInfo` (username, password) VALUES (?,?)";
-            const sqlInsert ="INSERT INTO heroku_4bdc2246fa66f64.userinfo (username, password) VALUES (?, SHA2(?, 224))";
+            const sqlInsert ="INSERT INTO heroku_907cf6e593e285e.userinfo (username, password) VALUES (?, SHA2(?, 224))";
             db.query(sqlInsert, [username1, password1], (err, results) => {
                 if (err) throw err;
                 console.log(username1);  

@@ -10,7 +10,7 @@ function PersonalProfile (){
     const location = useLocation();
     console.log(location.state.name)
     useEffect(() => {
-    Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/yourmovies', {
+    Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourmovies', {
       username3: location.state.name
     }).then(res => {
         console.log(res.data.length)
@@ -19,7 +19,7 @@ function PersonalProfile (){
     },[]);
     
     useEffect(() => {
-        Axios.post('https://cors-anywhere.herokuapp.com/https://git.heroku.com/lets-make-movie-magic.git/yourdislikes', {
+        Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourdislikes', {
           username3: location.state.name
         }).then(res => {
             // console.log(res.data)

@@ -13,8 +13,10 @@ function Signup() {
 
   const submitInformation = (event) =>{
     event.preventDefault();
-    //changed from https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/register
-    Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/register', {
+    console.log("does this work")
+    // https://thingproxy.freeboard.io/fetch/
+    // https://cors-anywhere.herokuapp.com/
+      Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/register', {
       username: username, 
       password: password
     }).then(res => {
@@ -38,7 +40,7 @@ function Signup() {
         <img className = "clapperimage" src = {LogInClapper} alt = "directors clapper" />
         <div className="test">
           {/* <image src = {LogInClapper}/> */}
-              <h2 className = "loginhead">Sign Up TESTING</h2>
+              <h2 className = "loginhead">Sign Up</h2>
               <div>
               <h6 id="emailtext">Username: </h6>
               <input type = "text" name = "username" id = "email" onChange={(e) => {

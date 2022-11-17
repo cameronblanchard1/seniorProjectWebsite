@@ -44,7 +44,7 @@ function InternalHomePage() {
       console.log(frienduser)
       if (frienduser != ""){
       event.preventDefault();
-      Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/pending', {
+      Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/pending', {
         username: user, 
         pendingfriend: frienduser
       }).then(
@@ -58,7 +58,7 @@ function InternalHomePage() {
 
 
   useEffect(() => {
-    Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/yoursentrequests', {
+    Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yoursentrequests', {
       username: user
     }).then(res => {
         // console.log(res.data)
@@ -76,7 +76,7 @@ function InternalHomePage() {
 
 
     useEffect(() => {
-      Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/yourpendingrequests', {
+      Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourpendingrequests', {
         username: user
       }).then(res => {
           // console.log(res.data)
@@ -100,7 +100,7 @@ function InternalHomePage() {
         console.log(pendings[key].pendingfriend)
 
 
-        Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/addfriends', {
+        Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/addfriends', {
           friend1: pendings[key].senderusername, 
           friend2: pendings[key].pendingfriend
         }).then(
@@ -113,7 +113,7 @@ function InternalHomePage() {
       const DeclineFriend = (event, {key}) =>{ 
         event.preventDefault();
 
-        Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/rejectrequest', {
+        Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/rejectrequest', {
           friend1: pendings[key].senderusername, 
           friend2: pendings[key].pendingfriend
         }).then(
@@ -125,6 +125,8 @@ function InternalHomePage() {
   
   return <div>
     <h2 className = "usernameinfo">Welcome, {location.state.name}!</h2>
+    <button className='likedbutton'  onClick={routeChange}>Your Rated Movies</button>
+    <button className='likedbutton'  onClick={routeChange2}>Your Friends' Rated Movies</button>
     <h3>Want to add a friend? Insert their username here: </h3>
     <input type = "text" name = "username" onChange={(e) => {
                 setFrienduser(e.target.value)
@@ -152,8 +154,7 @@ function InternalHomePage() {
             }
 
     <h3 className= "moviespre">Trending Movies for this week: </h3>
-    <button className='likedbutton'  onClick={routeChange}>Your Rated Movies</button>
-    <button className='likedbutton'  onClick={routeChange2}>Your Friends' Rated Movies</button>
+
 
     {movies?.length > 0 && movies.map((movie)=>
       <Movie  key={movie.id} {...movie}/> 

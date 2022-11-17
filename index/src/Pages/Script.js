@@ -30,7 +30,7 @@ console.log(title)
 function Likemovie (event, {title}){
     console.log(title)
     event.preventDefault();
-    Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/likes', {
+    Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/likes', {
       movietitle: title,
       username: location.state.name
     }).then();
@@ -39,7 +39,7 @@ function Likemovie (event, {title}){
 function Dislikemovie (event, {title}){
     console.log(title)
     event.preventDefault();
-    Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/dislikes', {
+    Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/dislikes', {
       movietitle: title,
       username: location.state.name
     }).then();

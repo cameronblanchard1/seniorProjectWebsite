@@ -22,7 +22,7 @@ function FriendsPage (){
       }
 
     useEffect(() => {
-        Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/getfriendone', {
+        Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/getfriendone', {
           friendone: location.state.name
         }).then(res => {
             console.log(res.data.length)
@@ -32,7 +32,7 @@ function FriendsPage (){
 
         useEffect(() => {
             console.log("called 2")
-            Axios.post('https://thingproxy.freeboard.io/fetch/https://lets-make-movie-magic.herokuapp.com/getfriendtwo', {
+            Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/getfriendtwo', {
               friendtwo: location.state.name
             }).then(res => {
                 console.log("friend two")
