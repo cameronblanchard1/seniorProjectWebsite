@@ -17,16 +17,7 @@ setInterval(function () {
 }, 5000);
 
 mysql://bc776534261b7a:f2bb35e4@us-cdbr-east-06.cleardb.net/heroku_907cf6e593e285e?reconnect=true
-// app.use(cors())
 
-// res.header("Access-Control-Allow-Origin", "https://makingmoviemagic.netlify.app"); 
-
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-//     console.log(res.header)
-//   });
 app.use(cors());
 
 app.use(express.json());
@@ -94,8 +85,6 @@ app.post("/register", (req, res) => {
             }) 
         }
      })
-
-
 });
 
 
@@ -131,7 +120,7 @@ app.post("/dislikes", (req, res) => {
 app.post("/yourmovies", (req, res) => {
     const username1 = req.body.username3;
     console.log(username1)
-    db.query("SELECT * FROM `heroku_907cf6e593e285e`.`likedMovies` WHERE username = ?", [username1], (err, results) =>    {
+    db.query("SELECT DISTINCT moviename FROM `heroku_907cf6e593e285e`.`likedMovies` WHERE username = ?", [username1], (err, results) =>    {
        console.log(results)
         res.send(results)
     })
@@ -140,7 +129,7 @@ app.post("/yourmovies", (req, res) => {
 app.post("/yourdislikes", (req, res) => {
     const username1 = req.body.username3;
     console.log(username1)
-    db.query("SELECT * FROM `heroku_907cf6e593e285e`.`dislikedMovies` WHERE username = ?", [username1], (err, results) =>    {
+    db.query("SELECT  DISTINCT moviename FROM `heroku_907cf6e593e285e`.`dislikedMovies` WHERE username = ?", [username1], (err, results) =>    {
        console.log(results)
         res.send(results)
     })
@@ -266,13 +255,32 @@ app.post("/getfriendtwo", (req, res) => {
 });
 
 
+app.post("/removelike", (req, res) => {
+    const name = req.body.name;
+    const moviename = req.body.moviename;
+    console.log("helloo in remove likes")
+    console.log(name)
+    console.log(moviename)
+    db.query("DELETE FROM heroku_907cf6e593e285e.likedmovies WHERE username = ? AND movieName = ?", [name, moviename], (err, results) =>    {
+       console.log(results)
+        res.send(results)
+    })
+});
+
+app.post("/removedislike", (req, res) => {
+    const name = req.body.name;
+    const moviename = req.body.moviename;
+    console.log("helloo in remove dislikes")
+    console.log(name)
+    console.log(moviename)
+    db.query("DELETE FROM heroku_907cf6e593e285e.dislikedmovies WHERE username = ? AND movieName = ?", [name, moviename], (err, results) =>    {
+       console.log(results)
+        res.send(results)
+    })
+});
+
+
 app.listen(process.env.PORT || 8080, () => {
     console.log("Server running");
 });
 
-
-
-
-// app.listen(8080, () => {
-//     console.log("Listening on port 3001");
-// });

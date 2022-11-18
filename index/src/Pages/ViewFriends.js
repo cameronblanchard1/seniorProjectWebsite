@@ -42,13 +42,13 @@ function ViewFriends (){
             <h2>Your Friend {location.state.param}'s Likes</h2>
             <h3>Likes</h3>
                 {ratings.map((rating, key) => (
-                 <h2>{rating.movieName}</h2> 
+                 <h2>{rating.moviename}</h2> 
                 ))}
                 {/* <button className="button" onClick={event => RemoveLike(location.state.name, rating.movieName)}>Remove Liked Movie</button> */}
 
                 <h3>Dislikes</h3>
                 {dislikes.map((dislikes, key) => (
-                 <h2>{dislikes.movieName}</h2> 
+                 <h2>{dislikes.moviename}</h2> 
                 ))}
                  {/* <button className="button" onClick={event => RemoveDisike(location.state.name, rating.movieName)}>Remove Liked Movie</button> */}
 

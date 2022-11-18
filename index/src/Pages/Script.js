@@ -5,21 +5,8 @@ import InternalHomePage from "./InternalHomePage";
 import Axios from "axios";
 
 const IMG_API="https://image.tmdb.org/t/p/w500/";
-const data = "Hello Everyone";
+const data = "Hello";
 
-
-// const Movie =({title, backdrop_path, vote_average, overview})=>
-// const Movie =(user)=>
-// (
-    
-//     <div className = "movieimages">
-//         {/* <img src={IMG_API+backdrop_path} alt={title}/>
-//         <h2>{title}</h2> */}
-//         <h2>{user}</h2>
-//         {/* <button className="button" onClick={event => Likemovie(event, {title})}>Liked</button>
-//         <button className="button" onClick={event => Dislikemovie(event, {title})}>Disliked</button> */}
-//     </div>
-// );
 function Movie ({title, backdrop_path, vote_average, overview}){
 console.log(title)
 
@@ -33,7 +20,9 @@ function Likemovie (event, {title}){
     Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/likes', {
       movietitle: title,
       username: location.state.name
-    }).then();
+    }).then(
+        console.log("Movie added once")
+    );
 }
 
 function Dislikemovie (event, {title}){

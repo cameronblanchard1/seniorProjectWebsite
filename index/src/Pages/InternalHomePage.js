@@ -1,13 +1,10 @@
 import {useEffect, useState} from 'react';
-import '../Styles/Contact.css';
+import '../Styles/InternalHomePage.css';
 import Movie from './Script';
 import {useLocation} from 'react-router-dom';
 import { useNavigate, Link } from "react-router-dom";
 import Axios from "axios";
 
-
-const API ="https://api.themoviedb.org/3/trending/movie/week?api_key=5ad343d5a012d9491667c2c470dc0273";
-const SEARCH_API="https://api.themoviedb.org/3/search/movie?api_key=89eef3426d167c3c8145a257ebe68357&query=";
 const TOP_RATED_API="https://api.themoviedb.org/3/trending/movie/week?api_key=5ad343d5a012d9491667c2c470dc0273"
 
 
@@ -49,8 +46,8 @@ function InternalHomePage() {
         pendingfriend: frienduser
       }).then(
         alert("Request Sent!"), 
-        navigate("/InternalHomePage", {state: {name: location.state.name}})
-       )
+        window.location.reload(false)
+        )
     } else{
       alert("Must enter username")
     }
@@ -105,8 +102,8 @@ function InternalHomePage() {
           friend2: pendings[key].pendingfriend
         }).then(
           alert("Friend Added!"),
-          navigate("/InternalHomePage", {state: {name: location.state.name}})
-         )
+          window.location.reload(false)
+          )
         } 
 
 
@@ -118,8 +115,8 @@ function InternalHomePage() {
           friend2: pendings[key].pendingfriend
         }).then(
           alert("Request Denied"),
-          navigate("/InternalHomePage", {state: {name: location.state.name}})
-         )
+          window.location.reload(false)
+          )
       }
 
   
