@@ -39,7 +39,6 @@ function PersonalProfile (){
         },[]);
 
 
-
       const RemoveLike = (event, name, movie) =>{ 
         event.preventDefault();
         console.log(name);
@@ -71,9 +70,16 @@ function PersonalProfile (){
     
             } 
 
+
+            const routeChange = (event) =>{ 
+                event.preventDefault();
+                navigate("/InternalHomePage", {state: {name: location.state.name}})
+              }
+
         return(
             <div>
                 <h2 className = "ratings">{location.state.name}'s Ratings</h2>
+                <button className='likedbutton'  onClick={routeChange}>Return to Home</button>
                 <br></br>
 
                 <h3>Likes</h3>

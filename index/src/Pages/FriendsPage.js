@@ -18,7 +18,7 @@ function FriendsPage (){
 
     const ViewFriendLikes = (event, param) =>{ 
         event.preventDefault();
-        navigate("/ViewFriends", {state: {param: param}})
+        navigate("/ViewFriends", {state: {param: param, name: location.state.name}})
       }
 
     useEffect(() => {
@@ -42,10 +42,15 @@ function FriendsPage (){
             },[]);
 
 
+            const routeChange = (event) =>{ 
+                event.preventDefault();
+                navigate("/InternalHomePage", {state: {name: location.state.name}})
+              }
 
         return(
             <div>
                 <h2>{location.state.name}'s Friends</h2>
+                <button className='likedbutton'  onClick={routeChange}>Return to Home</button>
                 {friendtwos.map((friendtwo, key) => (
                     <div>
                  <h2>{friendtwo.friendone}</h2> 
