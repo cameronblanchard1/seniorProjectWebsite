@@ -9,6 +9,7 @@ import PersonalProfile from "./Pages/PersonalProfile";
 import FriendsPage from "./Pages/FriendsPage";
 import ViewFriends from "./Pages/ViewFriends";
 
+
 function App(){
   return(
     <Router>
