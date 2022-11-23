@@ -21,7 +21,7 @@ function Login() {
         console.log(res.data)
         navigate("/Login");
       }  else{
-          navigate("/InternalHomePage", {state: {name: username, pass: password}});
+          navigate("/InternalHomePage", {state: {name: username, pass: password, isLoggedIn: true}});
 
       }
       // navigate("/Contact");

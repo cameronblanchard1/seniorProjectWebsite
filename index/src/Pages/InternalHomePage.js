@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import '../Styles/InternalHomePage.css';
 import Movie from './Script';
-import {useLocation} from 'react-router-dom';
+import {useLocation, browserHistory} from 'react-router-dom';
 import { useNavigate, Link } from "react-router-dom";
 import Axios from "axios";
 
@@ -26,6 +26,9 @@ function InternalHomePage() {
     event.preventDefault();
     navigate("/FriendsPage", {state: {name: location.state.name}})
   }
+
+
+
 
   useEffect(()=>{
     fetch(TOP_RATED_API)
@@ -119,50 +122,60 @@ function InternalHomePage() {
           )
       }
 
-  
-  return <div>
-    <h2 className = "usernameinfo">Welcome, {location.state.name}!</h2>
-    <button className='likedbutton'  onClick={routeChange}>Your Rated Movies</button>
-    <button className='likedbutton'  onClick={routeChange2}>Your Friends' Rated Movies</button>
-    <h3>Want to add a friend? Insert their username here: </h3>
-    <input type = "text" name = "username" onChange={(e) => {
-                setFrienduser(e.target.value)
-              }}/>
-    <button onClick={submitInformation}>Add!</button>
-    <h3>Your sent requests: </h3>
+  console.log("CHECKING IF LOGGED IN")
+ console.log(location.state.isLoggedIn)
 
-    {sents.map((sent, key) => (
-                 <h6>{sent.pendingfriend}</h6> 
-                ))}
-
-
-    <h3>Your pending requests: </h3>
-
-    {pendings.map((pending, key) => (
-            <div>
-              <h6>{pending.senderusername}</h6> 
-              {/* <h6>{key}</h6> */}
-              {/* <h6>{pendings[0]}</h6> */}
-              <button onClick={event => AcceptFriend(event, {key})}>Accept</button>
-              <button onClick={event => DeclineFriend(event, {key})}>Decline</button>
-
-             </div>
-            ))
-            }
-
-    <h3 className= "moviespre">Trending Movies for this week: </h3>
-
-
-    {movies?.length > 0 && movies.map((movie)=>
-      <Movie  key={movie.id} {...movie}/> 
-      // <Movie  key={1} {...location.state.name}/>
-)}
-  </div>
+ const logout = (event) =>{ 
+  event.preventDefault();
+  navigate("/", {state: {isLoggedIn: false}}, { replace: true });
+  alert("Logged out.")
+  console.log("here")
+  location.state.isLoggedIn = false;
+  console.log(location.state.isLoggedIn)
+  window.location.reload(false)
 
   
-
-
-
 }
+
+
+      return <div>
+      <h2 className = "usernameinfo">Welcome, {location.state.name}!</h2>
+      <button className='likedbutton'  onClick={logout}>Log Out</button>
+      <button className='likedbutton'  onClick={routeChange}>Your Rated Movies</button>
+      <button className='likedbutton'  onClick={routeChange2}>Your Friends' Rated Movies</button>
+      <h3>Want to add a friend? Insert their username here: </h3>
+      <input type = "text" name = "username" onChange={(e) => {
+                  setFrienduser(e.target.value)
+                }}/>
+      <button onClick={submitInformation}>Add!</button>
+      <h3>Your sent requests: </h3>
+  
+      {sents.map((sent, key) => (
+                   <h6>{sent.pendingfriend}</h6> 
+                  ))}
+      <h3>Your pending requests: </h3>
+  
+      {pendings.map((pending, key) => (
+              <div>
+                <h6>{pending.senderusername}</h6> 
+                {/* <h6>{key}</h6> */}
+                {/* <h6>{pendings[0]}</h6> */}
+                <button onClick={event => AcceptFriend(event, {key})}>Accept</button>
+                <button onClick={event => DeclineFriend(event, {key})}>Decline</button>
+  
+               </div>
+              ))
+              }
+  
+      <h3 className= "moviespre">Trending Movies for this week: </h3>
+  
+  
+      {movies?.length > 0 && movies.map((movie)=>
+        <Movie  key={movie.id} {...movie}/> 
+        // <Movie  key={1} {...location.state.name}/>
+  )}
+    </div>
+  }
+
 
 export default InternalHomePage;
