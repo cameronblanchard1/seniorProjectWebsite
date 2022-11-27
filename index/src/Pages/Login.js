@@ -12,7 +12,7 @@ function Login() {
 
   const submitInformation = (event) =>{
     event.preventDefault();
-    Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/login', {
+    Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/login', {
       username: username, 
       password: password
     }).then(res => {

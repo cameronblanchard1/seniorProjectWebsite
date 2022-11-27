@@ -136,18 +136,31 @@ app.post("/yourdislikes", (req, res) => {
 });
 
 app.post("/pending", (req, res) => {
-    const username = req.body.username;
-    const pendingfriend = req.body.pendingfriend;
+    const username = req.body.user;
+    const pendingfriend = req.body.frienduser;
     console.log(username)
     console.log(pendingfriend)
 
-    const sqlInsert = "INSERT INTO heroku_907cf6e593e285e.pendingRequests (senderusername, pendingfriend) VALUES (?, ?)";
-    db.query(sqlInsert, [username, pendingfriend], (err, results) => {
-        if (err) throw err;
-        res.send(results);
-        console.log("success");
-        // console.log(results);
-    })
+
+    db.query("SELECT * FROM `heroku_907cf6e593e285e`.`userinfo` WHERE username = ?", [username], (err, results) =>    {
+        console.log(username)
+        console.log(results)
+        if (results.length > 0){
+            const sqlInsert = "INSERT INTO heroku_907cf6e593e285e.pendingRequests (senderusername, pendingfriend) VALUES (?, ?)";
+            db.query(sqlInsert, [username, pendingfriend], (err, results) => {
+                if (err) throw err;
+                res.send("2");
+                console.log("success");
+                // console.log(results);
+            })
+        } else {
+            res.send("1")
+        }
+     })
+
+
+
+
 });
 
 
@@ -278,6 +291,30 @@ app.post("/removedislike", (req, res) => {
         res.send(results)
     })
 });
+
+
+
+app.post("/removefriend", (req, res) => {
+    const user = req.body.user;
+    const friend = req.body.friend;
+    console.log("helloo in friend remove")
+    console.log(user)
+    console.log(friend)
+    db.query("DELETE FROM heroku_907cf6e593e285e.friends WHERE friendone = ? AND friendtwo = ?", [user, friend], (err, results) =>    {
+       console.log(results)
+        // res.send(results)
+    })
+    db.query("DELETE FROM heroku_907cf6e593e285e.friends WHERE friendtwo = ? AND friendone = ?", [user, friend], (err, results) =>    {
+        console.log(results)
+        //  res.send(results)
+     })
+
+
+
+});
+
+
+
 
 
 app.listen(process.env.PORT || 8080, () => {

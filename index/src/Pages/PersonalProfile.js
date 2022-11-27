@@ -14,7 +14,7 @@ function PersonalProfile (){
 
     console.log(location.state.name)
     useEffect(() => {
-    Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourmovies', {
+    Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourmovies', {
       username3: location.state.name
     }).then(res => {
         console.log(res.data.length)
@@ -23,7 +23,7 @@ function PersonalProfile (){
     },[]);
     
     useEffect(() => {
-        Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourdislikes', {
+        Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourdislikes', {
           username3: location.state.name
         }).then(res => {
             // console.log(res.data)
@@ -44,7 +44,7 @@ function PersonalProfile (){
         console.log(name);
         console.log(movie);
 
-        Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/removelike', {
+        Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/removelike', {
             name: name, 
             moviename: movie
           }).then(
@@ -59,7 +59,7 @@ function PersonalProfile (){
             console.log(name);
             console.log(movie);
 
-            Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/removedislike', {
+            Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/removedislike', {
                 name: name, 
                 moviename: movie
               }).then(

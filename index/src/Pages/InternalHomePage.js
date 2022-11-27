@@ -10,6 +10,7 @@ const TOP_RATED_API="https://api.themoviedb.org/3/trending/movie/week?api_key=5a
 
 function InternalHomePage() {
   const [movies, setMovies] = useState([]);
+  const [tests, setTests] = useState([]);
   const [frienduser, setFrienduser] = useState('');
   const [sents, setSent] = useState([]);
   const [pendings, setPending] = useState([]);
@@ -44,30 +45,30 @@ function InternalHomePage() {
       console.log(frienduser)
       if (frienduser != ""){
       event.preventDefault();
-      Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/pending', {
+      Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/pending', {
         username: user, 
         pendingfriend: frienduser
-      }).then(
-        alert("Request Sent!"), 
-        window.location.reload(false)
-        )
-    } else{
-      alert("Must enter username")
+      }).then(res => {
+        if(res.data === 2) {
+          alert("Request Sent!") 
+          window.location.reload(false)
+        }  else{
+          alert("This user does not exist. Please try again.")
+        }
+
+    })
+      } else{
+      alert("Must enter a username.")
     }
   }
 
 
   useEffect(() => {
-    Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yoursentrequests', {
+    Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yoursentrequests', {
       username: user
     }).then(res => {
         // console.log(res.data)
         console.log(res.data.length)
-        //try a for loop with size less than res.data
-        // for (let i = 0; i < 1; i++) {
-        //     setRatings(res.data);
-        //     return;
-        // } 
         console.log(res.data)
         setSent(res.data);
         // });
@@ -76,10 +77,10 @@ function InternalHomePage() {
 
 
     useEffect(() => {
-      Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourpendingrequests', {
+      Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourpendingrequests', {
         username: user
       }).then(res => {
-          // console.log(res.data)
+          console.log("HELPPPP")
           console.log(res.data.length)
           //try a for loop with size less than res.data
           // for (let i = 0; i < 1; i++) {
@@ -95,12 +96,11 @@ function InternalHomePage() {
 
       const AcceptFriend = (event, {key}) =>{ 
         event.preventDefault();
-        // alert(JSON.stringify(pendings[key]));
         console.log(pendings[key].senderusername)
         console.log(pendings[key].pendingfriend)
 
 
-        Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/addfriends', {
+        Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/addfriends', {
           friend1: pendings[key].senderusername, 
           friend2: pendings[key].pendingfriend
         }).then(
@@ -113,7 +113,7 @@ function InternalHomePage() {
       const DeclineFriend = (event, {key}) =>{ 
         event.preventDefault();
 
-        Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/rejectrequest', {
+        Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/rejectrequest', {
           friend1: pendings[key].senderusername, 
           friend2: pendings[key].pendingfriend
         }).then(
@@ -130,9 +130,9 @@ function InternalHomePage() {
   navigate("/", {state: {isLoggedIn: false}}, { replace: true });
   alert("Logged out.")
   console.log("here")
-  location.state.isLoggedIn = false;
-  console.log(location.state.isLoggedIn)
-  window.location.reload(false)
+  // location.state.isLoggedIn = false;
+  // console.log(location.state.isLoggedIn)
+  // window.location.reload(false)
 
   
 }
@@ -140,19 +140,27 @@ function InternalHomePage() {
 
       return <div>
       <h2 className = "usernameinfo">Welcome, {location.state.name}!</h2>
+      {/* <br></br> */}
       <button className='likedbutton'  onClick={logout}>Log Out</button>
+      <br></br>
+
       <button className='likedbutton'  onClick={routeChange}>Your Rated Movies</button>
+      <br></br>
+
       <button className='likedbutton'  onClick={routeChange2}>Your Friends' Rated Movies</button>
+      <br></br>
+
       <h3>Want to add a friend? Insert their username here: </h3>
       <input type = "text" name = "username" onChange={(e) => {
                   setFrienduser(e.target.value)
                 }}/>
       <button onClick={submitInformation}>Add!</button>
       <h3>Your sent requests: </h3>
-  
+        
       {sents.map((sent, key) => (
                    <h6>{sent.pendingfriend}</h6> 
                   ))}
+      
       <h3>Your pending requests: </h3>
   
       {pendings.map((pending, key) => (

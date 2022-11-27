@@ -13,7 +13,7 @@ function ViewFriends (){
     console.log(location.state.name);
 
     useEffect(() => {
-    Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourmovies', {
+    Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourmovies', {
       username3: location.state.param
     }).then(res => {
         console.log(res.data.length)
@@ -22,7 +22,7 @@ function ViewFriends (){
     },[]);
     
     useEffect(() => {
-        Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourdislikes', {
+        Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourdislikes', {
           username3: location.state.param
         }).then(res => {
             // console.log(res.data)

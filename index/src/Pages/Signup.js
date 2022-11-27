@@ -16,7 +16,7 @@ function Signup() {
     console.log("does this work")
     // https://thingproxy.freeboard.io/fetch/
     // https://cors-anywhere.herokuapp.com/
-      Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/register', {
+      Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/register', {
       username: username, 
       password: password
     }).then(res => {

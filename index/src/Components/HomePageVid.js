@@ -8,9 +8,9 @@ function HomePageVid() {
     <div className='vid-container'>
         <video src={homepagevid} autoPlay loop muted/>
         <div className='videotext'>
-            <h1>MOVIE MAGIC</h1>
-            <p>Connect with friends and find your new favorite movie!</p>
-            <p>Get started now!</p>
+            <h1 className = "titlehomepage">MOVIE MAGIC</h1>
+            <p  className = "homepagepara">Connect with friends and find your new favorite movie!</p>
+            <p className = "homepagepara">Get started now!</p>
             </div>
     </div>
   )

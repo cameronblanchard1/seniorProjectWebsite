@@ -22,7 +22,7 @@ function FriendsPage (){
       }
 
     useEffect(() => {
-        Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/getfriendone', {
+        Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/getfriendone', {
           friendone: location.state.name
         }).then(res => {
             console.log(res.data.length)
@@ -30,9 +30,28 @@ function FriendsPage (){
         })
         },[]);
 
+
+
+        const RemoveFriend = (event, friend ) =>{ 
+            event.preventDefault();
+            console.log(location.state.name)
+            console.log(friend)
+            Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/removefriend', {
+              user: location.state.name, 
+              friend: friend
+            }).then(
+              alert("Friend Removed"),
+              window.location.reload(false)
+              )
+          }
+
+
+
+
+
         useEffect(() => {
             console.log("called 2")
-            Axios.post('https://corsanywhere.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/getfriendtwo', {
+            Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/getfriendtwo', {
               friendtwo: location.state.name
             }).then(res => {
                 console.log("friend two")
@@ -55,12 +74,14 @@ function FriendsPage (){
                     <div>
                  <h2>{friendtwo.friendone}</h2> 
                  <button onClick={event => ViewFriendLikes(event, friendtwo.friendone)}>View Ratings</button>
+                 <button onClick={event => RemoveFriend(event, friendtwo.friendone)}>Remove Friend</button>
                  </div>
                 ))}
                 {friendones.map((friendone, key) => (
                 <div>
                     <h2>{friendone.friendtwo}</h2> 
                     <button onClick={event => ViewFriendLikes(event, friendone.friendtwo)}>View Ratings</button>
+                    <button onClick={event => RemoveFriend(event, friendone.friendtwo)}>Remove Friend</button>
                 </div>  
                 ))}
 

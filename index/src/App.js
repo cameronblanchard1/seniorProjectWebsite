@@ -23,8 +23,6 @@ function App(){
         <Route path = "/PersonalProfile" element = {<PersonalProfile />} />
         <Route path = "/FriendsPage" element = {<FriendsPage />} />
         <Route path = "/ViewFriends" element = {<ViewFriends />} />
-
-
       </Routes>
     </Router>
   );
