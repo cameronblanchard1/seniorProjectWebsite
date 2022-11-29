@@ -136,13 +136,13 @@ app.post("/yourdislikes", (req, res) => {
 });
 
 app.post("/pending", (req, res) => {
-    const username = req.body.user;
-    const pendingfriend = req.body.frienduser;
+    const username = req.body.username;
+    const pendingfriend = req.body.pendingfriend;
     console.log(username)
     console.log(pendingfriend)
 
 
-    db.query("SELECT * FROM `heroku_907cf6e593e285e`.`userinfo` WHERE username = ?", [username], (err, results) =>    {
+    db.query("SELECT * FROM `heroku_907cf6e593e285e`.`userinfo` WHERE username = ?", [pendingfriend], (err, results) =>    {
         console.log(username)
         console.log(results)
         if (results.length > 0){

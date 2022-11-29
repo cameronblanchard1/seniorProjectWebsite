@@ -45,6 +45,8 @@ function InternalHomePage() {
       console.log(frienduser)
       if (frienduser != ""){
       event.preventDefault();
+      console.log(user)
+      console.log(frienduser)
       Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/pending', {
         username: user, 
         pendingfriend: frienduser
@@ -54,6 +56,7 @@ function InternalHomePage() {
           window.location.reload(false)
         }  else{
           alert("This user does not exist. Please try again.")
+          window.location.reload(false)
         }
 
     })
