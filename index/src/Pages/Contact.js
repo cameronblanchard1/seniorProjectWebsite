@@ -1,6 +1,7 @@
+//importing pages style
 import '../Styles/Contact.css';
 
-
+//this is a very simple page, merely displaying my photo and words
 function Contact (){
     return(
         <div className='contact-container'>

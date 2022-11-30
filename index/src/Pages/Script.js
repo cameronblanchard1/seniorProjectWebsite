@@ -1,12 +1,16 @@
+//importing required packages
 import React from "react";
 import "../Styles/Movies.css";
 import {Route, useNavigate, useLocation, Link} from 'react-router-dom';
 import InternalHomePage from "./InternalHomePage";
 import Axios from "axios";
 
+
+//this is done ONCE using script, multiple times on internal home page using movie map
 const IMG_API="https://image.tmdb.org/t/p/w500/";
 const data = "Hello";
 
+//taking in the parameters from the movie db api
 function Movie ({title, backdrop_path, vote_average, overview}){
 console.log(title)
 
@@ -14,6 +18,7 @@ console.log(title)
     console.log(location.state.name)
 //   }
 
+//allow users to like movie by querying db
 function Likemovie (event, {title}){
     console.log(title)
     event.preventDefault();
@@ -25,6 +30,7 @@ function Likemovie (event, {title}){
     );
 }
 
+//allow users to like dismovie by querying db
 function Dislikemovie (event, {title}){
     console.log(title)
     event.preventDefault();
@@ -35,6 +41,7 @@ function Dislikemovie (event, {title}){
 }
 
 
+//displaying information for the movie
 return(
     <div className = "movieimages">
         <img src={IMG_API+backdrop_path} alt={title}/>

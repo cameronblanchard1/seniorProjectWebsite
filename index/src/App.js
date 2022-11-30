@@ -1,3 +1,4 @@
+//importing pages
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
@@ -9,7 +10,7 @@ import PersonalProfile from "./Pages/PersonalProfile";
 import FriendsPage from "./Pages/FriendsPage";
 import ViewFriends from "./Pages/ViewFriends";
 
-
+//these links allow redirection within my pages, also includes the nav bar
 function App(){
   return(
     <Router>

@@ -1,3 +1,4 @@
+/* displaying images, words, and information for each movie */
 .movieimages {
     display: flex;
     align-items: center;
@@ -43,6 +44,7 @@ h3 {
 }
 
 
+/* playing around with buttons for the liked and disliked buttons */
 .button {
   align-items: center;
   background-color: #427290;

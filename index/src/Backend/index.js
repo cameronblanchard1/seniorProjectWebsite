@@ -1,3 +1,4 @@
+//THIS WAS NOT USED, just left it in for reference because it is in the files that are deployed
 const express = require('express');
 const mysql = require('mysql');
 

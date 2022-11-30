@@ -1,3 +1,4 @@
+/* formating words */
 * {
     text-align: center;
 }
@@ -121,6 +122,7 @@ body {
 }
 
 
+/* using same style from liked button */
 .buttons {
     align-items: center;
     background-color: #427290;
@@ -130,18 +132,18 @@ body {
     color: white;
     cursor: pointer;
     display: flex;
-    font-family: Inter,sans-serif;
+    /* font-family: Inter,sans-serif; */
     font-size: 16px;
     height: 30px;
     justify-content: center;
-    line-height: 24px;
+    /* line-height: 24px; */
     max-width: 100%;
     padding: 0 25px;
     position: relative;
     text-align: center;
     text-decoration: none;
     user-select: none;
-    -webkit-user-select: none;
+    /* -webkit-user-select: none; */
     touch-action: manipulation;
   }
 

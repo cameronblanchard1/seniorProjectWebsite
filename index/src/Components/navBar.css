@@ -1,5 +1,7 @@
+/* importing my sites font that I picked from google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
 
+/* using the font to all text */
 *{
     font-size: 16px;
     font-family: 'Barlow', sans-serif;
@@ -8,6 +10,8 @@
     box-sizing: border-box;
 }
 
+
+/* formating home and contact button styles*/
 header {
     display: flex;
     align-items: center;
@@ -19,6 +23,7 @@ header {
     /* position: fixed; */
 }
 
+/* formating home and contact button styles*/
 nav a {
     color: aliceblue;
     /* text-align:left; */
@@ -27,12 +32,14 @@ nav a {
     align-items: center;
 }
 
+/* formating home and contact button styles*/
 nav a:hover {
     text-decoration: underline;
     color: rgb(139, 137, 139);
     font-size: 20px;
 }
 
+/* formatting logo */
 img {
     width: 150px;
     height: 130px;
@@ -44,6 +51,7 @@ nav a:active {
     color: black;
 }
 
+/* fixing log in and sign up buttons to top right corner*/
 nav .logInButton {
     position: relative;
     /* top: 30px; */
@@ -65,12 +73,11 @@ nav .signUpButton {
     border: none;
 }
 
-/* nav .logInButton:active {
-    top: 32px;
-} */
+
 
 
 /* setting visibility and opacity to transp. and hidden because at largest version of the screen, we do not want these functions visisble */
+/* did not end up getting used because I did not finish the reactive nav bar functionality*/
 header .navclicks {
     cursor: pointer;
     background: transparent;
@@ -83,11 +90,10 @@ header .navclicks {
 }
 
 
+/* attempting to adjust the CSS when the screen is at a particular width, does not fully work, but leaving it in for reference as
+it was on the deployed site */
 @media only screen and (max-width: 750px){
 
-    /* header{
-        box-sizing: border-box;
-    } */
 
    header .navclicks{
     visibility: visible;
@@ -128,39 +134,3 @@ header .navclicks {
 
 
 }
-
-
-
-/* 
-.Navbar {
-    width: 100%;
-    height: 100px;
-    background-color: rgb(221, 88, 185);
-    display: flex;
-    /* padding: 0px; 
-
-}
-
- .Navbar .logo {
-    flex: 50%;
-    display: flex;
-    padding-left: 100px;
-    /* padding-top: 20px; 
-    align-items: center;
-    color: white;
-} */
-
-/* .Navbar .logo img {
-    width: 100px;
-} */
-
-/* .Navbar .links{
-    display: flex;
-    text-align: center; 
-    align-items: center;
-} */
-
-/* .Navbar a {
-    color: rgb(255, 246, 246);
-    padding: 30px;
-} */ 

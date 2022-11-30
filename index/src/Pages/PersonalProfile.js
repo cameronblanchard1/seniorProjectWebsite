@@ -7,12 +7,15 @@ import { useNavigate, Link } from "react-router-dom";
 
 function PersonalProfile (){
 
+  //creating use state arrays and navigate for redirection
     const [ratings, setRatings] = useState([]);
     const [dislikes, setDislikes] = useState([]);
     const location = useLocation();
     const navigate = useNavigate();
 
     console.log(location.state.name)
+
+    //querying db to get the users liked and disliked movies
     useEffect(() => {
     Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/yourmovies', {
       username3: location.state.name
@@ -28,17 +31,12 @@ function PersonalProfile (){
         }).then(res => {
             // console.log(res.data)
             console.log(res.data.length)
-            //try a for loop with size less than res.data
-            // for (let i = 0; i < 1; i++) {
-            //     setRatings(res.data);
-            //     return;
-            // } 
             setDislikes(res.data);
-            // });
         })
         },[]);
 
 
+        //querying db to remove a movie from likes and dislikes, alerting user, then reloading page ro reflect change
       const RemoveLike = (event, name, movie) =>{ 
         event.preventDefault();
         console.log(name);
@@ -71,11 +69,13 @@ function PersonalProfile (){
             } 
 
 
+            //changing page on click, and sending username to page
             const routeChange = (event) =>{ 
                 event.preventDefault();
                 navigate("/InternalHomePage", {state: {name: location.state.name}})
               }
 
+              //displaying all words and buttons on the personal profile  
         return(
             <div>
                 <h2 className = "ratings">{location.state.name}'s Ratings</h2>

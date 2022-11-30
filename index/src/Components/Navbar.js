@@ -1,15 +1,16 @@
+//importing necessary packages
 import React from 'react';
 import { useRef } from 'react';
 import { Link } from "react-router-dom";
 import './navBar.css';
 import {FaBars, FaTimes} from "react-icons/fa";
 
-/* eslint-disable */
-
-
 function Navbar() {
+
+//using use ref so the nav bar doesnt have to rerender on every redirect
 const navRef = useRef();
 
+//displays responsive nav when screens at certain size
 const displayNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
 }
@@ -17,13 +18,17 @@ const displayNavbar = () => {
   return (
 
     <header>
+        {/* using icon */}
         <img src={require('./movieMagicIcon.png')} />
         <nav ref = {navRef}>
+
+            {/* creating links */}
             <Link to = "/">Home</Link>
             <Link to = "/Contact">Contact</Link>
             <Link to="/Signup"> <button className= "signUpButton">Sign up</button></Link>
             <Link to="/Login"> <button className= "logInButton">Log In</button></Link>
 
+            {/* attempting responsive nav bar and to display the icons to allow drop down */}
             <button className = "navclicks closeNav" onClick={displayNavbar}><FaTimes/></button>
         </nav>
         <button className = "navclicks" onClick={displayNavbar}><FaBars/></button>
@@ -33,19 +38,3 @@ const displayNavbar = () => {
 
 export default Navbar;
 
-/* <div>
-<nav className = "Navbar">
-    <div className = "logo">
-        <img src ='../visuals/placeholder.jpg'></img>
-        <h1>Name of Site here</h1>
-    </div>
-
-    <div className = "links">
-        <Link to = "/homePage">Home Page</Link>
-        <Link to = "/aboutPage">About Page</Link>
-        <Link to = "/contactPage">Contact Page</Link>
-        {/* <input type = "button">Sign up</input> }*/
-        
-//     </div>
-// </nav>
-// </div> */}

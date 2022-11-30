@@ -1,5 +1,7 @@
+/* importing font*/
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@800&display=swap');
 
+/* fixing video to full screen*/
 video {
     object-fit: cover;
     width: 100%;
@@ -9,6 +11,7 @@ video {
     opacity: 0.5;
 }
 
+/* fixing video to full screen*/
 .vid-container {
     height: 100%;
     width: 100%;
@@ -19,6 +22,7 @@ video {
 }
 
 
+/* styling words for home page */
 h1 {
     color: #a1c181;
     fill-opacity: .6 !important;
@@ -35,6 +39,7 @@ p, a.signuplink {
     font-size: 30px !important;
 }
 
+/* styling video text */
 .videotext {
     font-family: "Barlow ExtraBold 800", sans-serif;
     height: 100%;

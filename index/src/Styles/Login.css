@@ -1,5 +1,8 @@
+/* importing font */
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@800&display=swap');
 
+
+/* displaying clapper image */
 .clapperimage {
   display: flex; 
   margin: 0 auto;
@@ -9,6 +12,8 @@ margin-top: 0;
 z-index: -1;
 }
 
+
+/* styling words and text boxes for log in, also used for sign up */
 .loginheader{
   margin: 0 auto;
   text-align: center;

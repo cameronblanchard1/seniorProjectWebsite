@@ -10,6 +10,7 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  //on click, submitting log in information and querying db
   const submitInformation = (event) =>{
     event.preventDefault();
     Axios.post('https://nameless-coast-53768.herokuapp.com/https://lets-make-movie-magic.herokuapp.com/login', {
@@ -17,10 +18,12 @@ function Login() {
       password: password
     }).then(res => {
       if(res.data.message === "Invalid input. Please try again") {
+        //if login info is invalid, displaying
         alert("Invalid input. Please try again.")  
         console.log(res.data)
         navigate("/Login");
       }  else{
+        //navigate to internal home page, setting login parameter to true.
           navigate("/InternalHomePage", {state: {name: username, pass: password, isLoggedIn: true}});
 
       }
@@ -29,6 +32,8 @@ function Login() {
     
     
   };
+
+  //displaying login display and images
       return (
       <form className = "login">
         {/* <h3 className= "loginheader">Director's Cut</h3> */}

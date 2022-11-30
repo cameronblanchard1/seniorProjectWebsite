@@ -36,7 +36,7 @@ p {
     font-size: small;
 }
 
-
+/* playing with layering images and shaping images in css */
 .contacttext{
     height: 100%;
     width: 100%;
@@ -93,6 +93,8 @@ body {
     background-color: #a1c181;
 }
 
+
+/* displaying buttons */
 .likedbutton {
     display: flex;
     align-items: center;

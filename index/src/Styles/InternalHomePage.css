@@ -1,3 +1,4 @@
+/* styling words for home page */
 * {
     text-align: right;
 }
@@ -39,6 +40,7 @@ p {
     width: 100%;
     background-color: #a1c181;
 }
+
 
 .headshot {
     float: left;  

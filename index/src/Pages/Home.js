@@ -10,6 +10,7 @@ import {useLocation} from 'react-router-dom';
 
 function Home (){
 
+    //preventing returns after logout 
     window.history.pushState(null, null, window.location.href);
     window.onpopstate = function (event) {
         window.history.go(1);
@@ -17,7 +18,7 @@ function Home (){
 
     }
 
-
+//displaying homepage video
     return(
       <HomePageVid />
     );
